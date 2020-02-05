@@ -44,6 +44,35 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontSize: 30.0,
                         ),
                       ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 150.0, left: 15.0 , right: 30.0),
+                      child: Container(           
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(25.0),
+                            bottomLeft: Radius.circular(5.0),
+                            topLeft: Radius.circular(5.0),
+                            topRight: Radius.circular(5.0)
+                          )
+                        ),
+
+                        child: TextField(
+                          
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
+                            hintText: 'Search Products',
+                            hintStyle: TextStyle(
+                              fontFamily: 'Monserrat',
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            )
+                          ),
+                        ),
+                      )
                     )
                   ]
               )
