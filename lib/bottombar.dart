@@ -11,8 +11,11 @@ class _Bottom_BarState extends State<Bottom_Bar> {
 
   ];
   void onTabTapped(int index) {
+
     setState(() {
-      _currentIndex = index;
+      if(index!=2) {
+        _currentIndex = index;
+      }
     });
   }
   @override
@@ -23,21 +26,59 @@ class _Bottom_BarState extends State<Bottom_Bar> {
 
       items: [
         new BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text('Home'),
+          icon: Icon(
+              Icons.home,
+            color: Colors.red[400],
+          ),
+          title: Text(
+              'Home',
+            style: TextStyle(
+              color: Colors.red[400],
+            ),
+          ),
         ),
         new BottomNavigationBarItem(
-          icon: Icon(Icons.mail),
-          title: Text('Messages'),
+          icon: Icon(
+              Icons.mail,
+            color: Colors.red[400],
+          ),
+          title: Text(
+              'Messages',
+            style: TextStyle(
+              color: Colors.red[400],
+            ),
+          ),
         ),
         new BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile')
+            icon: Icon(
+                Icons.minimize,
+            ),
+            title: Text("")
         ),
-        // new BottomNavigationBarItem(
-        //     icon: Icon(Icons.ac_unit),
-        //     title: Text('Cold Text')
-        // )
+        new BottomNavigationBarItem(
+            icon: Icon(
+                Icons.person,
+              color: Colors.red[400],
+            ),
+            title: Text(
+                'Profile',
+              style: TextStyle(
+                color: Colors.red[400],
+              ),
+            )
+        ),
+         new BottomNavigationBarItem(
+             icon: Icon(
+                 Icons.ac_unit,
+               color: Colors.red[400],
+             ),
+             title: Text(
+                 'Cold Text',
+               style: TextStyle(
+                 color: Colors.red[400],
+               ),
+             )
+         )
       ],
     );
   }
