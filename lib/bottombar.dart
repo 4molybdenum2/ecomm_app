@@ -27,7 +27,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
       shape: CircularNotchedRectangle(),
       notchMargin: 5,
       child: Container(
-        height: 60,
+        height: 65,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -47,12 +47,12 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
-                        Icons.dashboard,
-                        size: currentTab == 0 ? 40 : 30,
+                        Icons.home,
+                        size: currentTab == 0 ? 35 : 30,
                         color: currentTab == 0 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Text1',
+                        'Home',
                         style: TextStyle(
                           fontSize: currentTab == 0 ? 15 : 10,
                           color: currentTab == 0 ? Colors.red[400] : Colors.grey,
@@ -75,7 +75,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     children: <Widget>[
                       Icon(
                         Icons.chat,
-                        size: currentTab == 1 ? 40 : 30,
+                        size: currentTab == 1 ? 35 : 30,
                         color: currentTab == 1 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
@@ -109,12 +109,12 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
-                        Icons.dashboard,
-                        size: currentTab == 2 ? 40 : 30,
+                        Icons.account_circle,
+                        size: currentTab == 2 ? 35 : 30,
                         color: currentTab == 2 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Text3',
+                        'Account',
                         style: TextStyle(
                           fontSize: currentTab == 2 ? 15 : 10,
                           color: currentTab == 2 ? Colors.red[400] : Colors.grey,
@@ -136,12 +136,12 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
-                        Icons.chat,
-                        size: currentTab == 3 ? 40 : 30,
+                        Icons.settings,
+                        size: currentTab == 3 ? 35 : 30,
                         color: currentTab == 3 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Text4',
+                        'Settings',
                         style: TextStyle(
                           fontSize: currentTab == 3 ? 15 : 10,
                           color: currentTab == 3 ? Colors.red[400] : Colors.grey,
