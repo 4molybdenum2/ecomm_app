@@ -6,13 +6,19 @@ class Bottom_Bar extends StatefulWidget {
 }
 
 class _Bottom_BarState extends State<Bottom_Bar> {
-  int currentTab = 0; // to keep track of active tab index
+  int currentTab = 0;// to keep track of active tab index
   final List<Widget> screens = [
 //    Dashboard(),
 //    Chat(),
 //    Profile(),
 //    Settings(),
   ]; // to store nested tabs
+
+  void updatesize(){
+      switch(currentTab){
+
+      }
+  }
   final PageStorageBucket bucket = PageStorageBucket();
 //  Widget currentScreen = Dashboard(); // Our first view in viewport
   @override
@@ -42,11 +48,13 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     children: <Widget>[
                       Icon(
                         Icons.dashboard,
+                        size: currentTab == 0 ? 40 : 30,
                         color: currentTab == 0 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
                         'Text1',
                         style: TextStyle(
+                          fontSize: currentTab == 0 ? 15 : 10,
                           color: currentTab == 0 ? Colors.red[400] : Colors.grey,
                         ),
                       ),
@@ -67,11 +75,13 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     children: <Widget>[
                       Icon(
                         Icons.chat,
+                        size: currentTab == 1 ? 40 : 30,
                         color: currentTab == 1 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
                         'Text2',
                         style: TextStyle(
+                          fontSize: currentTab == 1 ? 15 : 10,
                           color: currentTab == 1 ? Colors.red[400] : Colors.grey,
                         ),
                       ),
@@ -100,11 +110,13 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     children: <Widget>[
                       Icon(
                         Icons.dashboard,
+                        size: currentTab == 2 ? 40 : 30,
                         color: currentTab == 2 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
                         'Text3',
                         style: TextStyle(
+                          fontSize: currentTab == 2 ? 15 : 10,
                           color: currentTab == 2 ? Colors.red[400] : Colors.grey,
                         ),
                       ),
@@ -125,11 +137,13 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     children: <Widget>[
                       Icon(
                         Icons.chat,
+                        size: currentTab == 3 ? 40 : 30,
                         color: currentTab == 3 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
                         'Text4',
                         style: TextStyle(
+                          fontSize: currentTab == 3 ? 15 : 10,
                           color: currentTab == 3 ? Colors.red[400] : Colors.grey,
                         ),
                       ),
