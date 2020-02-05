@@ -15,9 +15,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          ListView(
+
+      body: ListView(
             children: <Widget>[
               Stack(
                   children: <Widget>[
@@ -50,18 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
-          Container(
-            height:40,
-            color: Colors.red,
-          ),
-        ],
-      ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
         child:Icon(Icons.add),
 
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: Bottom_Bar(),
     );
   }
