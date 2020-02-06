@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ListView(
         children: <Widget>[
           Stack(children: <Widget>[
-            Container(
+            Container( 
               height: 250.0,
               decoration: BoxDecoration(
                 borderRadius:
