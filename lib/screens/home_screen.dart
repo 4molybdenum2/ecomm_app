@@ -1,3 +1,4 @@
+import 'package:ecomm_app/buildcard.dart';
 import 'package:flutter/material.dart';
 import 'shopdetails.dart';
 
@@ -11,21 +12,17 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
 
   TabController _tabController;
+  int mainid;
 
-  void gotodetails(){
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) {
-        return shopDetail();
-      },
-    ),);
-  }
 
   @override
   void initState() {
     _tabController = new TabController(length: 6, vsync: this);
     super.initState();
   }
+  void popup(int id){
 
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,106 +124,55 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                     ),
                     ],
                   ),
-              SizedBox(height: 10,),
+              SizedBox(height: 20,),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: SizedBox(),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 1',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
+                  MaterialButton(
+                      onPressed: (){
+                        popup(1);
                       },
-                    ),
-                  ),
+                      child: BuildCard(id:1)),
                   Expanded(
                     child: SizedBox(),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 2',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
+                  MaterialButton(
+                      onPressed: (){
+                        popup(2);
                       },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 3',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
+                      child: BuildCard(id:2)),
                   Expanded(
                     child: SizedBox(),
                   ),
                 ],
-              )
-
-//              GridView.count(
-//                crossAxisCount: 2,
-//                primary: false,
-//                crossAxisSpacing: 2.0,
-//                mainAxisSpacing: 4.0,
-//                shrinkWrap: true,
-//                children: <Widget>[
-//                  BuildCard(name: "Item 1",status: "Here",cardIndex: 1,),
-//                  BuildCard(name: "Item 2",status: "Here",cardIndex: 2,),
-//                  BuildCard(name: "Item 3",status: "Here",cardIndex: 3,),
-//                  BuildCard(name: "Item 4",status: "Here",cardIndex: 4,),
-//                  BuildCard(name: "Item 5",status: "Here",cardIndex: 5,),
-//                  BuildCard(name: "Item 6",status: "Here",cardIndex: 6,),
-//
-//                ],
-//              )
+              ),
+              SizedBox(height: 15,),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  MaterialButton(
+                      onPressed: (){
+                        popup(3);
+                      },
+                      child: BuildCard(id:3)),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  MaterialButton(
+                      onPressed: (){
+                        popup(4);
+                      },
+                      child: BuildCard(id:4)),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20,),
             ],
 
           ),
