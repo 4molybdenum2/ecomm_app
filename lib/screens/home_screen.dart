@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
   void gotodetails(){
     Navigator.push(context, MaterialPageRoute(
       builder: (context) {
-        return shopDetail();
+        return ShopDetail();
       },
     ),);
   }
@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
        child: ListView(
         shrinkWrap: true,
             children: <Widget>[
+//            TODO: Yahan stack ki jagah SliverAppBar use karna hai.
               Stack(
                   children: <Widget>[
                     Container(
