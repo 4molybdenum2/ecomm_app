@@ -1,9 +1,13 @@
 import 'package:ecomm_app/screens/home_screen.dart';
+import 'package:ecomm_app/screens/orders_page.dart';
+import 'package:ecomm_app/screens/setting_page.dart';
 import 'package:ecomm_app/screens/shopdetails.dart';
 import 'package:flutter/material.dart';
 import 'buildcard.dart';
 import 'screens/shopdetails.dart';
 import 'screens/stores_page.dart';
+import 'screens/orders_page.dart';
+import 'screens/setting_page.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -21,7 +25,8 @@ class _MyHomePageState extends State<MyHomePage>{
  final List<Widget> _children = [
    HomeScreen(),
    StoresPage(),
-
+   Orders_page(),
+   SettingsPage()
  ];
 
   
@@ -37,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage>{
         child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       bottomNavigationBar: BottomAppBar(
       shape: CircularNotchedRectangle(),
       notchMargin: 5,
