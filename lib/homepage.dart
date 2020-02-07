@@ -1,9 +1,13 @@
 import 'package:ecomm_app/screens/home_screen.dart';
+import 'package:ecomm_app/screens/orders_page.dart';
+import 'package:ecomm_app/screens/setting_page.dart';
 import 'package:ecomm_app/screens/shopdetails.dart';
 import 'package:flutter/material.dart';
 import 'buildcard.dart';
 import 'screens/shopdetails.dart';
 import 'screens/stores_page.dart';
+import 'screens/orders_page.dart';
+import 'screens/setting_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -16,13 +20,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
-  final List<Widget> _children = [
-    HomeScreen(),
-    StoresPage(),
-  ];
+ final List<Widget> _children = [
+   HomeScreen(),
+   StoresPage(),
+   Orders_page(),
+   SettingsPage()
+ ];
 
-
-//Bottom App Bar -----------------------------------------------------------------------------------------------------------------------------
   Widget _bottomAppBar(){
     return BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -158,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       );
     }
-  //----Bottom App Bar ends here-----------------------------------------------------------------------------------------------------------------------------------  
+
 
 
   @override
