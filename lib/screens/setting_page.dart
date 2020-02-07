@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ecomm_app/screens/settingschildren/accountpage.dart';
+import 'package:ecomm_app/screens/settingschildren/login_page.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -6,43 +8,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int index = 0;
-  final List<Widget> settingchildren = [
-    MainSettingView(),
-    MyAccountView(),
 
-  ];
-
-  static void updateindex(int index1){index=index1;}
-
-  static Widget MainSettingView(){
-    return ListView(
-      shrinkWrap: true,
-      children: <Widget>[
-        SizedBox(height: 20,),
-        Row(
-          children: <Widget>[
-            SizedBox(width: 20,),
-            MaterialButton(
-              onPressed: (){
-                updateindex(1);
-              },
-              child: Text(
-                "My Account",
-                style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-
-    );
-  }
-
-  static MyAccountView(){
-    return Container(color: Colors.deepOrange,);
+  bool accountexists(){
+    return true;
   }
 
   @override
@@ -63,10 +31,57 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-          settingchildren[index],
+      ListView(
+        shrinkWrap: true,
+        children: <Widget>[
+          SizedBox(height: 20,),
+          Row(
+            children: <Widget>[
+              SizedBox(width: 20,),
+              MaterialButton(
+                onPressed: (){
+                  if(accountexists() == true ) {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MyAccountView();
+                          },
+                        )
+                    );
+                  }else{
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return MyAccountView();
+                          },
+                        )
+                    );
+                  }
+                  },
+
+
+
+                child: Text(
+                  "My Account",
+                  style: TextStyle(
+                      fontSize: 20
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+
+
+
+        ],
+
+      )
 
         ],
       ),
     );
   }
 }
+
+
