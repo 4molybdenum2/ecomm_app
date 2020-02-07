@@ -10,7 +10,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
 
   bool accountexists(){
-    return true;
+    return false;
   }
 
   @override
@@ -52,7 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     Navigator.push(context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return MyAccountView();
+                            return Login();
                           },
                         )
                     );
