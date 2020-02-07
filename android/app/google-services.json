@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1076718239473",
+    "firebase_url": "https://ecomm-app-afb2f.firebaseio.com",
+    "project_id": "ecomm-app-afb2f",
+    "storage_bucket": "ecomm-app-afb2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076718239473:android:7abe6b0c0551992e13f350",
+        "android_client_info": {
+          "package_name": "com.example.ecomm_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxQil1Y-IDfuBDnANiiGh4Ne1RFj18WT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
