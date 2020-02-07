@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StoresPage extends StatefulWidget {
   @override
@@ -6,6 +7,47 @@ class StoresPage extends StatefulWidget {
 }
 
 class _StoresPageState extends State<StoresPage> {
+
+  var shopData;
+
+ @override
+  void initState() { 
+    super.initState();
+    setState(() {
+      shopData = Firestore.instance.collection('shop').snapshots();
+    });
+  }
+
+  // getShopDetails(){
+  //   if(shopData!=null){
+  //       return StreamBuilder(
+  //         stream: shopData,
+  //         builder:(context,snapshot)
+  //         {
+  //           if(snapshot.data!=null)
+  //           {
+  //             return ListView.builder(
+  //               primary: false,
+  //               shrinkWrap: true,
+  //               itemCount: snapshot.data.documents.length,
+  //               itemBuilder: (context,i){
+  //                 return new Column(
+  //                   children: <Widget>[
+  //                     _buildStoreData(snapshot.data.documents[i].data['Name'],snapshot.data.documents[i].data['Type'])
+  //                   ],
+  //                 );
+  //               }
+  //               );
+  //           }
+  //         }
+  //         );
+  //     }
+  //     else{
+  //       return new Text('Loading...');
+  //     }
+  // }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,13 +97,29 @@ class _StoresPageState extends State<StoresPage> {
                    padding: EdgeInsets.only(top: 45.0),
                    child: Container(
                      height: MediaQuery.of(context).size.height - 300.0,
-                     child: ListView(
-
-                       children:[
-                         _buildStoreData('Chacha Fruits Shop' , 'Fruits and Vegetables'),
-                         _buildStoreData('Stationary IIITM' , 'Stationary Shop')
-                       ]
-                     ),
+                     child: StreamBuilder(
+                       stream: shopData,
+                       builder: (context,snapshot){
+                         if(snapshot.data!=null){
+                           return ListView.builder(
+                              primary: false,
+                              shrinkWrap: true,
+                              itemCount: snapshot.data.documents.length,
+                              itemBuilder: (context,i){
+                                return new Column(
+                                  children: <Widget>[
+                                    _buildStoreData(snapshot.data.documents[i].data['Name'] , snapshot.data.documents[i].data['Type'])
+                                  ],
+                                );
+                              }
+                              
+                            ); 
+                         }
+                         else{
+                                return new Text('Loading...');
+                          }
+                       }
+                    )
                    ),
                   )
                ]
@@ -73,7 +131,7 @@ class _StoresPageState extends State<StoresPage> {
   }
 
  //---returns store card---------------------------------------------------------------------------------------------------------
-  Widget _buildStoreData(String storeName, String storeType){
+  Widget _buildStoreData(storeName, storeType){
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(border: Border.all(color: Colors.red , width: 1.0, ),borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -120,5 +178,6 @@ class _StoresPageState extends State<StoresPage> {
     );
   }
 
+  
 
 }

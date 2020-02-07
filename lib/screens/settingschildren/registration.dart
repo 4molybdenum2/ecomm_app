@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -7,7 +7,7 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
-  final auth = FirebaseAuth.instance;
+  // final auth = FirebaseAuth.instance;
   final mailController = TextEditingController();
   final passController = TextEditingController();
   String success = "fail";
@@ -50,25 +50,25 @@ class _RegistrationState extends State<Registration> {
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                     ),
-                    MaterialButton(
-                      onPressed: () async {
-                        try {
-                          final newUser =
-                              await auth.createUserWithEmailAndPassword(
-                                  email: mailController.text,
-                                  password: passController.text);
+                    // MaterialButton(
+                    //   onPressed: () async {
+                    //     try {
+                    //       final newUser =
+                    //           await auth.createUserWithEmailAndPassword(
+                    //               email: mailController.text,
+                    //               password: passController.text);
 
-                          if(newUser != null){
-                            setState(() {
-                              success = "success";
-                            });
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      },
-                      child: Text("REGISTER"),
-                    ),
+                    //       if(newUser != null){
+                    //         setState(() {
+                    //           success = "success";
+                    //         });
+                    //       }
+                    //     } catch (e) {
+                    //       print(e);
+                    //     }
+                    //   },
+                    //   child: Text("REGISTER"),
+                    // ),
 
                     Text(success),
                   ],
