@@ -15,6 +15,9 @@ class _StoresPageState extends State<StoresPage> {
     super.initState();
     setState(() {
       shopData = Firestore.instance.collection('shop').snapshots();
+
+      if(shopData==null)
+        print('Null');
     });
   }
 
@@ -108,7 +111,7 @@ class _StoresPageState extends State<StoresPage> {
                               itemBuilder: (context,i){
                                 return new Column(
                                   children: <Widget>[
-                                    _buildStoreData(snapshot.data.documents[i].data['Name'] , snapshot.data.documents[i].data['Type'])
+                                    _buildStoreData(context, snapshot.data.documents[i])
                                   ],
                                 );
                               }
@@ -131,7 +134,7 @@ class _StoresPageState extends State<StoresPage> {
   }
 
  //---returns store card---------------------------------------------------------------------------------------------------------
-  Widget _buildStoreData(storeName, storeType){
+  Widget _buildStoreData(BuildContext context, DocumentSnapshot document){
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(border: Border.all(color: Colors.red , width: 1.0, ),borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -146,12 +149,12 @@ class _StoresPageState extends State<StoresPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                    Text(
-                      storeName,
+                      document['Name'],
                     style: TextStyle(fontFamily: 'QuickSand', fontSize: 15.0, color:Colors.red[400],fontWeight: FontWeight.bold),
                     ) ,
                     SizedBox(height: 5.0),
                      Text(
-                    storeType,
+                    document['Type'],
                     style: TextStyle(fontFamily: 'QuickSand', fontSize: 12.0, color:Colors.orange[400]),
                     ),
                 ],
