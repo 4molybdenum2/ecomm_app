@@ -13,6 +13,38 @@ class _SettingsPageState extends State<SettingsPage> {
 
   ];
 
+  static void updateindex(int index1){index=index1;}
+
+  static Widget MainSettingView(){
+    return ListView(
+      shrinkWrap: true,
+      children: <Widget>[
+        SizedBox(height: 20,),
+        Row(
+          children: <Widget>[
+            SizedBox(width: 20,),
+            MaterialButton(
+              onPressed: (){
+                updateindex(1);
+              },
+              child: Text(
+                "My Account",
+                style: TextStyle(
+                    fontSize: 20
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+
+    );
+  }
+
+  static MyAccountView(){
+    return Container(color: Colors.deepOrange,);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,46 +68,5 @@ class _SettingsPageState extends State<SettingsPage> {
         ],
       ),
     );
-  }
-}
-
-class MainSettingView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      shrinkWrap: true,
-      children: <Widget>[
-        SizedBox(height: 20,),
-        Row(
-          children: <Widget>[
-            SizedBox(width: 20,),
-            MaterialButton(
-              onPressed: (){
-
-              },
-              child: Text(
-                "My Account",
-                style: TextStyle(
-                    fontSize: 20
-                ),
-              ),
-            ),
-          ],
-        ),
-
-
-
-
-      ],
-
-    );
-  }
-}
-
-
-class MyAccountView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
