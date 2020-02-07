@@ -90,42 +90,51 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                       )
                     )
                   ]
-              ),
+                  ),
                   SizedBox(height: 10,),
-                  TabBar(
-                    isScrollable: true,
-                    unselectedLabelColor: Colors.black,
-                    labelColor: Color(0xffED305A),
-                    controller: _tabController,
-                    indicator: BoxDecoration(
-                    color: Color(0x55B71C1C),
-                    borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                      topLeft: Radius.circular(5),
-                    bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(5),
+                  
+              ScrollConfiguration(
+                  behavior: MyBehaviour(),
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),                   
+                    child: TabBar(
+                      isScrollable: true,
+                      unselectedLabelColor: Colors.black,
+                      labelColor: Color(0xffED305A),
+                      controller: _tabController,
+                      indicatorPadding: EdgeInsets.all(5.0),
+                      
+                      indicator: BoxDecoration(                     
+                        color: Color(0x55B71C1C),
+                        borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(15),
+                          topLeft: Radius.circular(5),
+                        bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(5),
+                        ),
+                      ),
+                      tabs: <Widget>[
+                      Tab(
+                      text: "Groceries",
+                      ),
+                      Tab(
+                      text: "Furniture",
+                      ),
+                      Tab(
+                      text: "Clothing",
+                      ),
+                      Tab(
+                      text: "Electronics",
+                      ),
+                      Tab(
+                      text: "Japan",
+                      ),
+                      Tab(
+                      text: "China",
+                      ),
+                      ],
                     ),
                     ),
-                    tabs: <Widget>[
-                    Tab(
-                    text: "Groceries",
-                    ),
-                    Tab(
-                    text: "Furniture",
-                    ),
-                    Tab(
-                    text: "Clothing",
-                    ),
-                    Tab(
-                    text: "Electronics",
-                    ),
-                    Tab(
-                    text: "Japan",
-                    ),
-                    Tab(
-                    text: "China",
-                    ),
-                    ],
                   ),
               SizedBox(height: 10,),
               Row(
@@ -232,4 +241,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
           ),
     );
   }
+}
+
+class MyBehaviour extends ScrollBehavior{
+  @override
+  Widget buildViewportChrome(
+    BuildContext context, Widget child, AxisDirection axisDirection){
+      return child;
+    }
+  
 }
