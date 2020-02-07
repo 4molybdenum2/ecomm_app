@@ -1,8 +1,9 @@
+import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:ecomm_app/screens/shopdetails.dart';
 import 'package:flutter/material.dart';
-import 'bottombar.dart';
 import 'buildcard.dart';
 import 'screens/shopdetails.dart';
+import 'screens/stores_page.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -14,233 +15,162 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
+class _MyHomePageState extends State<MyHomePage>{
 
-  TabController _tabController;
+  int currentTab = 0;
+ final List<Widget> _children = [
+   HomeScreen(),
+   StoresPage(),
 
-  void gotodetails(){
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) {
-        return shopDetail();
-      },
-    ),);
-  }
+ ];
 
-  @override
-  void initState() {
-    _tabController = new TabController(length: 6, vsync: this);
-    super.initState();
-  }
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        shrinkWrap: true,
-            children: <Widget>[
-              Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 250.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                        color: Colors.red[400],
-                      ),
-                    ),
-                    Container(
-                      height: 180.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                        color: Colors.red[300],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 35.0 , left: 20.0),
-                      child: Text('Hey welcome to our Ecomm App',
-                        style: TextStyle(
-                          color: Colors.white ,
-                          fontFamily: 'QuickSand',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 150.0, left: 15.0 , right: 30.0),
-                      child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(25.0),
-                            bottomLeft: Radius.circular(5.0),
-                            topLeft: Radius.circular(5.0),
-                            topRight: Radius.circular(5.0)
-                          )
-                        ),
+      body: _children[currentTab],
 
-                        child: TextField(
-
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
-                            hintText: 'Search Products',
-                            hintStyle: TextStyle(
-                              fontFamily: 'Monserrat',
-                              fontSize: 14.0,
-                              color: Colors.grey,
-                            )
-                          ),
-                        ),
-                      )
-                    )
-                  ]
-              ),
-                  SizedBox(height: 10,),
-                  TabBar(
-                    isScrollable: true,
-                    unselectedLabelColor: Colors.black,
-                    labelColor: Color(0xffED305A),
-                    controller: _tabController,
-                    indicator: BoxDecoration(
-                    color: Color(0x55B71C1C),
-                    borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                      topLeft: Radius.circular(5),
-                    bottomLeft: Radius.circular(15),
-                      bottomRight: Radius.circular(5),
-                    ),
-                    ),
-                    tabs: <Widget>[
-                    Tab(
-                    text: "Groceries",
-                    ),
-                    Tab(
-                    text: "Furniture",
-                    ),
-                    Tab(
-                    text: "Clothing",
-                    ),
-                    Tab(
-                    text: "Electronics",
-                    ),
-                    Tab(
-                    text: "Japan",
-                    ),
-                    Tab(
-                    text: "China",
-                    ),
-                    ],
-                  ),
-              SizedBox(height: 10,),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 1',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 2',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 3',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                ],
-              )
-
-//              GridView.count(
-//                crossAxisCount: 2,
-//                primary: false,
-//                crossAxisSpacing: 2.0,
-//                mainAxisSpacing: 4.0,
-//                shrinkWrap: true,
-//                children: <Widget>[
-//                  BuildCard(name: "Item 1",status: "Here",cardIndex: 1,),
-//                  BuildCard(name: "Item 2",status: "Here",cardIndex: 2,),
-//                  BuildCard(name: "Item 3",status: "Here",cardIndex: 3,),
-//                  BuildCard(name: "Item 4",status: "Here",cardIndex: 4,),
-//                  BuildCard(name: "Item 5",status: "Here",cardIndex: 5,),
-//                  BuildCard(name: "Item 6",status: "Here",cardIndex: 6,),
-//
-//                ],
-//              )
-            ],
-
-          ),
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: Bottom_Bar(),
+      bottomNavigationBar: BottomAppBar(
+      shape: CircularNotchedRectangle(),
+      notchMargin: 5,
+      child: Container(
+        height: 65,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                MaterialButton(
+                  minWidth: 40,
+                  onPressed: () {
+                    setState(() {
+
+                      currentTab = 0;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.home,
+                        size: currentTab == 0 ? 35 : 30,
+                        color: currentTab == 0 ? Colors.red[400] : Colors.grey,
+                      ),
+                      Text(
+                        'Home',
+                        style: TextStyle(
+                          fontSize: currentTab == 0 ? 15 : 10,
+                          color: currentTab == 0 ? Colors.red[400] : Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  minWidth: 40,
+                  onPressed: () {
+                    setState(() {
+//                      currentScreen =
+//                          Chat(); // if user taps on this dashboard tab will be active
+                      currentTab = 1;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.store,
+                        size: currentTab == 1 ? 35 : 30,
+                        color: currentTab == 1 ? Colors.red[400] : Colors.grey,
+                      ),
+                      Text(
+                        'Stores',
+                        style: TextStyle(
+                          fontSize: currentTab == 1 ? 15 : 10,
+                          color: currentTab == 1 ? Colors.red[400] : Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+
+            // Right Tab bar icons
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                MaterialButton(
+                  minWidth: 40,
+                  onPressed: () {
+                    setState(() {
+//                      currentScreen =
+//                          Profile(); // if user taps on this dashboard tab will be active
+                      currentTab = 2;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.account_circle,
+                        size: currentTab == 2 ? 35 : 30,
+                        color: currentTab == 2 ? Colors.red[400] : Colors.grey,
+                      ),
+                      Text(
+                        'Orders',
+                        style: TextStyle(
+                          fontSize: currentTab == 2 ? 15 : 10,
+                          color: currentTab == 2 ? Colors.red[400] : Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                MaterialButton(
+                  minWidth: 40,
+                  onPressed: () {
+                    setState(() {
+//                      currentScreen =
+//                          Settings(); // if user taps on this dashboard tab will be active
+                      currentTab = 3;
+                    });
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(
+                        Icons.settings,
+                        size: currentTab == 3 ? 35 : 30,
+                        color: currentTab == 3 ? Colors.red[400] : Colors.grey,
+                      ),
+                      Text(
+                        'Settings',
+                        style: TextStyle(
+                          fontSize: currentTab == 3 ? 15 : 10,
+                          color: currentTab == 3 ? Colors.red[400] : Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            )
+
+          ],
+        ),
+      ),
+      ),
     );
   }
 }
+
