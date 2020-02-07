@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class shopDetail extends StatefulWidget {
+class ShopDetail extends StatefulWidget {
   @override
-  _shopDetailState createState() => _shopDetailState();
+  _ShopDetailState createState() => _ShopDetailState();
 }
 
-class _shopDetailState extends State<shopDetail> {
+class _ShopDetailState extends State<ShopDetail> {
   @override
   Widget build(BuildContext context) {
     return Container(
