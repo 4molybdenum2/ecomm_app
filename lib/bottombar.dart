@@ -74,12 +74,12 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(
-                        Icons.chat,
+                        Icons.store,
                         size: currentTab == 1 ? 35 : 30,
                         color: currentTab == 1 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Text2',
+                        'Stores',
                         style: TextStyle(
                           fontSize: currentTab == 1 ? 15 : 10,
                           color: currentTab == 1 ? Colors.red[400] : Colors.grey,
@@ -114,7 +114,7 @@ class _Bottom_BarState extends State<Bottom_Bar> {
                         color: currentTab == 2 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Account',
+                        'Orders',
                         style: TextStyle(
                           fontSize: currentTab == 2 ? 15 : 10,
                           color: currentTab == 2 ? Colors.red[400] : Colors.grey,
