@@ -14,7 +14,7 @@ class _ProductsPageState extends State<ProductsPage> {
   void initState() { 
     super.initState();
     setState(() {
-      shopData = Firestore.instance.collection('shop').snapshots();
+      shopData = Firestore.instance.collection('Products').snapshots();
     });
   }
 
@@ -108,7 +108,7 @@ class _ProductsPageState extends State<ProductsPage> {
                               itemBuilder: (context,i){
                                 return new Column(
                                   children: <Widget>[
-                                    _buildStoreData(snapshot.data.documents[i].data['Name'] , snapshot.data.documents[i].data['Type'])
+                                    _buildStoreData(snapshot.data.documents[i].data['Name'] , snapshot.data.documents[i].data['Type'], snapshot.data.documents[i].data['M.R.P'], snapshot.data.documents[i].data['Store Price'] )
                                   ],
                                 );
                               }
@@ -131,7 +131,7 @@ class _ProductsPageState extends State<ProductsPage> {
   }
 
  //---returns store card---------------------------------------------------------------------------------------------------------
-  Widget _buildStoreData(storeName, storeType){
+  Widget _buildStoreData(productName, productType, productMRP, productStorePrice){
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(border: Border.all(color: Colors.red , width: 1.0, ),borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -146,13 +146,23 @@ class _ProductsPageState extends State<ProductsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                    Text(
-                      storeName,
+                      productName,
                     style: TextStyle(fontFamily: 'QuickSand', fontSize: 15.0, color:Colors.red[400],fontWeight: FontWeight.bold),
                     ) ,
                     SizedBox(height: 5.0),
                      Text(
-                    storeType,
-                    style: TextStyle(fontFamily: 'QuickSand', fontSize: 12.0, color:Colors.orange[400]),
+                    productType,
+                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 12.0, color:Colors.orange[400]),
+                    ),
+                    SizedBox(height: 5.0),
+                     Text(
+                    'M.R.P: ₹$productMRP',
+                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 12.0, color:Colors.orange[400]),
+                    ),
+                    SizedBox(height: 5.0),
+                     Text(
+                    'Store Price: ₹$productStorePrice',
+                    style: TextStyle(fontFamily: 'Montserrat', fontSize: 12.0, color:Colors.orange[400]),
                     ),
                 ],
               ),
