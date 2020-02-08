@@ -2,7 +2,7 @@ import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:ecomm_app/screens/orders_page.dart';
 import 'package:ecomm_app/screens/setting_page.dart';
 import 'package:flutter/material.dart';
-import 'screens/stores_page.dart';
+import 'screens/products_page.dart';
 import 'screens/orders_page.dart';
 import 'screens/setting_page.dart';
 
@@ -15,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
  final List<Widget> _children = [
    HomeScreen(),
-   StoresPage(),
+   ProductsPage(),
    OrdersPage(),
    SettingsPage()
  ];

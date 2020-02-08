@@ -52,11 +52,11 @@ class _SettingsPageState extends State<SettingsPage> {
                               },
                             ));
                           } else {
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return Registration();
-                              },
-                            ));
+//                            Navigator.push(context, MaterialPageRoute(
+//                              builder: (context) {
+//                                return Registration();
+//                              },
+//                            ));
                           }
                         },
                         child: Text(
