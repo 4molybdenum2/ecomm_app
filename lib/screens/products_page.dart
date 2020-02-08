@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class StoresPage extends StatefulWidget {
+class ProductsPage extends StatefulWidget {
   @override
-  _StoresPageState createState() => _StoresPageState();
+  _ProductsPageState createState() => _ProductsPageState();
 }
 
-class _StoresPageState extends State<StoresPage> {
+class _ProductsPageState extends State<ProductsPage> {
 
   var shopData;
 
@@ -70,7 +70,7 @@ class _StoresPageState extends State<StoresPage> {
               child: Row(
                     children: <Widget>[
                     Text(
-                    'Stores',
+                    'Products',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'QuickSand',
