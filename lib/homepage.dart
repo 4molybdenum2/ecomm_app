@@ -164,6 +164,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // backgroundColor: Colors.orange,
         onPressed: () {},
         child: Icon(Icons.add),
+        backgroundColor: Color(0xff37d4f4),
+        foregroundColor: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: _bottomAppBar(),

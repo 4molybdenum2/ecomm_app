@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           topRight: Radius.circular(5.0))),
                   child: TextField(
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: Icon(Icons.search , color: Color(0xff37d4f4),),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
                         hintText: 'Search Products',

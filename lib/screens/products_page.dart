@@ -63,12 +63,10 @@ class _ProductsPageState extends State<ProductsPage> {
             padding: EdgeInsets.only(top: 15.0, left: 10.0,right: 10.0),
             child: Row(
               children: <Widget>[
-                  IconButton(icon: Icon(Icons.arrow_back_ios), disabledColor: Colors.white, onPressed: null,),
                   Expanded(child: Row(children: <Widget>[IconButton(icon: Icon(Icons.shopping_cart),disabledColor: Colors.white, onPressed: null,)],mainAxisAlignment: MainAxisAlignment.end,),),
                 ],
               ),
             ),
-          SizedBox(height: 25.0,),
 
           Padding(
               padding: EdgeInsets.only(left: 40.0),
