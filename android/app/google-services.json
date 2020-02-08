@@ -1,54 +1,20 @@
 {
   "project_info": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    "project_number": "1076718239473",
-    "firebase_url": "https://ecomm-app-afb2f.firebaseio.com",
-    "project_id": "ecomm-app-afb2f",
-    "storage_bucket": "ecomm-app-afb2f.appspot.com"
-=======
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
-    "project_number": "554679123460",
-    "firebase_url": "https://ecom-kppt.firebaseio.com",
-    "project_id": "ecom-kppt",
-    "storage_bucket": "ecom-kppt.appspot.com"
-<<<<<<< HEAD
-=======
     "project_number": "473261993688",
     "firebase_url": "https://ecomm-ff21b.firebaseio.com",
     "project_id": "ecomm-ff21b",
     "storage_bucket": "ecomm-ff21b.appspot.com"
->>>>>>> 5e6311fb59f359c805d4561d814393068ae8207a
-=======
->>>>>>> 32c96b9ac522fafd6206c7c52c85afd4aab432dc
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "mobilesdk_app_id": "1:554679123460:android:ed3e21bb532778843cff51",
-=======
         "mobilesdk_app_id": "1:473261993688:android:b814d4a55954438f1f71ad",
->>>>>>> 5e6311fb59f359c805d4561d814393068ae8207a
-=======
-        "mobilesdk_app_id": "1:1076718239473:android:d8757a52add3d43d13f350",
-=======
-        "mobilesdk_app_id": "1:554679123460:android:ed3e21bb532778843cff51",
->>>>>>> 32c96b9ac522fafd6206c7c52c85afd4aab432dc
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
         "android_client_info": {
           "package_name": "com.example.ecomm_app"
         }
       },
       "oauth_client": [
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-          "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
-=======
           "client_id": "473261993688-ugskhlm0aftif6bb94j33b14jt32aabr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -58,48 +24,19 @@
         },
         {
           "client_id": "473261993688-24q5ohkpm98e36lg6j8f6dj7qqc6ukl0.apps.googleusercontent.com",
->>>>>>> 5e6311fb59f359c805d4561d814393068ae8207a
-=======
-          "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
-=======
-          "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
->>>>>>> 32c96b9ac522fafd6206c7c52c85afd4aab432dc
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
           "client_type": 3
         }
       ],
       "api_key": [
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-          "current_key": "AIzaSyBftZBhVFUOCNAzRyvnUR85xDFguiJMo0Q"
-=======
           "current_key": "AIzaSyAOulq6DyepHKcMEGttKUz53aNW9mwylOA"
->>>>>>> 5e6311fb59f359c805d4561d814393068ae8207a
-=======
-          "current_key": "AIzaSyAxQil1Y-IDfuBDnANiiGh4Ne1RFj18WT4"
-=======
-          "current_key": "AIzaSyBftZBhVFUOCNAzRyvnUR85xDFguiJMo0Q"
->>>>>>> 32c96b9ac522fafd6206c7c52c85afd4aab432dc
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
-=======
               "client_id": "473261993688-24q5ohkpm98e36lg6j8f6dj7qqc6ukl0.apps.googleusercontent.com",
->>>>>>> 5e6311fb59f359c805d4561d814393068ae8207a
-=======
-              "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
-=======
-              "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
->>>>>>> 32c96b9ac522fafd6206c7c52c85afd4aab432dc
->>>>>>> e6c3f80069e78d15356af9814b0070bda3f1aa6f
               "client_type": 3
             }
           ]
