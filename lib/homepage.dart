@@ -1,7 +1,7 @@
 import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:ecomm_app/screens/orders_page.dart';
+import 'package:ecomm_app/screens/products_page.dart';
 import 'package:ecomm_app/screens/setting_page.dart';
-import 'file:///home/pranshu/Dev/test/ecomm_app/lib/screens/stores_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -13,7 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentTab = 0;
   final List<Widget> _children = [
     HomeScreen(),
-    StoresPage(),
+    ProductsPage(),
     OrdersPage(),
     SettingsPage()
   ];
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         currentTab == 1 ? Colors.red[400] : Colors.grey,
                       ),
                       Text(
-                        'Stores',
+                        'Products',
                         style: TextStyle(
                           fontSize: currentTab == 1 ? 15 : 10,
                           color:
