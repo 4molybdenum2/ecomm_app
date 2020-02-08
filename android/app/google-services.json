@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "1076718239473",
-    "firebase_url": "https://ecomm-app-afb2f.firebaseio.com",
-    "project_id": "ecomm-app-afb2f",
-    "storage_bucket": "ecomm-app-afb2f.appspot.com"
+    "project_number": "473261993688",
+    "firebase_url": "https://ecomm-ff21b.firebaseio.com",
+    "project_id": "ecomm-ff21b",
+    "storage_bucket": "ecomm-ff21b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1076718239473:android:d8757a52add3d43d13f350",
+        "mobilesdk_app_id": "1:473261993688:android:b814d4a55954438f1f71ad",
         "android_client_info": {
           "package_name": "com.example.ecomm_app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
+          "client_id": "473261993688-ugskhlm0aftif6bb94j33b14jt32aabr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ecomm_app",
+            "certificate_hash": "9ea045cdc3c1654f99b93599812d8f0eaf127962"
+          }
+        },
+        {
+          "client_id": "473261993688-24q5ohkpm98e36lg6j8f6dj7qqc6ukl0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAxQil1Y-IDfuBDnANiiGh4Ne1RFj18WT4"
+          "current_key": "AIzaSyAOulq6DyepHKcMEGttKUz53aNW9mwylOA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1076718239473-p8et4kh4ep6l9meuec2fhjmlqelsl5if.apps.googleusercontent.com",
+              "client_id": "473261993688-24q5ohkpm98e36lg6j8f6dj7qqc6ukl0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
