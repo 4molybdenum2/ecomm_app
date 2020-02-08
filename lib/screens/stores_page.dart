@@ -18,40 +18,6 @@ class _StoresPageState extends State<StoresPage> {
     });
   }
 
-//  getShopDetails(){
-//      if(shopData != null)
-//      {
-//        return StreamBuilder(
-//          stream: shopData,
-//          builder: (context,snapshot){
-//            if(snapshot.hasData && snapshot.connectionState == ConnectionState.active){
-//
-//              return ListView.builder(
-//                itemCount: snapshot.data.documents.length,
-//                itemBuilder: (context,index){
-//                  return new Column(
-//                    children: <Widget>[
-//                      _TextData(context, snapshot.data.documents[index]),
-//
-//                    ]
-//                  );
-//                }
-//              );
-//            }
-//            else
-//              return Container(
-//                child:  Text('Inactive Connection'),
-//              );
-//          }
-//          );
-//      }
-//
-//      else{
-//        return Text('Loading');
-//      }
-//    }
- 
-
 
   @override
   Widget build(BuildContext context) {
@@ -183,17 +149,6 @@ class _StoresPageState extends State<StoresPage> {
     );
   }
 }
-
-Widget _TextData(BuildContext context , DocumentSnapshot document){
-  return Column(
-    children: <Widget>[
-      Text(document['Name']),
-    Text(document['Type'])
-    ],
-  );
-
-}
-  
 
 
 
