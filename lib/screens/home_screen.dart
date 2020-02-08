@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'shopdetails.dart';
+import 'package:ecomm_app/buildcard.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -8,247 +10,242 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
-
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  final auth = FirebaseAuth.instance;
+  FirebaseUser curUser;
   TabController _tabController;
+  int mainid;
 
-  void gotodetails(){
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) {
-        return ShopDetail();
-      },
-    ),);
+  void gotodetails() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return ShopDetail();
+        },
+      ),
+    );
+  }
+
+  void getUser() async {
+    try {
+      final user = await auth.currentUser();
+      if (user != null) {
+        curUser = user;
+        print(curUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
   void initState() {
     _tabController = new TabController(length: 6, vsync: this);
     super.initState();
+    getUser();
   }
 
+  void popup(int id) {}
 
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: ListView(
+      child: ListView(
         shrinkWrap: true,
-            children: <Widget>[
+        children: <Widget>[
 //            TODO: Yahan stack ki jagah SliverAppBar use karna hai.
-              Stack(
-                  children: <Widget>[
-                    Container(
-                      height: 250.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                        color: Colors.red[400],
-                      ),
-                    ),
-                    Container(
-                      height: 180.0,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(75.0)),
-                        color: Colors.red[300],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 35.0 , left: 20.0),
-                      child: Text('Hey welcome to our Ecomm App',
-                        style: TextStyle(
-                          color: Colors.white ,
-                          fontFamily: 'QuickSand',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 150.0, left: 15.0 , right: 30.0),
-                      child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(25.0),
-                            bottomLeft: Radius.circular(5.0),
-                            topLeft: Radius.circular(5.0),
-                            topRight: Radius.circular(5.0)
-                          )
-                        ),
-
-                        child: TextField(
-
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
-                            hintText: 'Search Products',
-                            hintStyle: TextStyle(
-                              fontFamily: 'Monserrat',
-                              fontSize: 14.0,
-                              color: Colors.grey,
-                            )
-                          ),
-                        ),
-                      )
-                    )
-                  ]
+          Stack(children: <Widget>[
+            Container(
+              height: 250.0,
+              decoration: BoxDecoration(
+                borderRadius:
+                BorderRadius.only(bottomRight: Radius.circular(75.0)),
+                color: Colors.red[400],
+              ),
+            ),
+            Container(
+              height: 180.0,
+              decoration: BoxDecoration(
+                borderRadius:
+                BorderRadius.only(bottomRight: Radius.circular(75.0)),
+                color: Colors.red[300],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 35.0, left: 20.0),
+              child: Text(
+                'Hey welcome to our Ecomm App',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'QuickSand',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.0,
+                ),
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(top: 150.0, left: 15.0, right: 30.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(25.0),
+                          bottomLeft: Radius.circular(5.0),
+                          topLeft: Radius.circular(5.0),
+                          topRight: Radius.circular(5.0))),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
+                        hintText: 'Search Products',
+                        hintStyle: TextStyle(
+                          fontFamily: 'Monserrat',
+                          fontSize: 14.0,
+                          color: Colors.grey,
+                        )),
                   ),
-                  SizedBox(height: 10,),
-                  
-              ScrollConfiguration(
-                  behavior: MyBehaviour(),
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),                   
-                    child: TabBar(
-                      isScrollable: true,
-                      unselectedLabelColor: Colors.black,
-                      labelColor: Color(0xffED305A),
-                      controller: _tabController,
-                      indicatorPadding: EdgeInsets.all(5.0),
-                      
-                      indicator: BoxDecoration(                     
-                        color: Color(0x55B71C1C),
-                        borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                          topLeft: Radius.circular(5),
-                        bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(5),
-                        ),
-                      ),
-                      tabs: <Widget>[
-                      Tab(
-                      text: "Groceries",
-                      ),
-                      Tab(
-                      text: "Furniture",
-                      ),
-                      Tab(
-                      text: "Clothing",
-                      ),
-                      Tab(
-                      text: "Electronics",
-                      ),
-                      Tab(
-                      text: "Japan",
-                      ),
-                      Tab(
-                      text: "China",
-                      ),
-                      ],
-                    ),
-                    ),
-                  ),
-              SizedBox(height: 10,),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 1',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 2',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-                    child: new MaterialButton(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                      elevation: 5.0,
-                      height: 100,
-                      color: Colors.red[400],
-                      child: Column(
-                        children: <Widget>[
-                          Icon(
-                            Icons.image,
-                            size: 75,
-                          ),
-                          Text('Shop 3',
-                              style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-                        ],
-                      ),
-                      onPressed: () {
-                        gotodetails();
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(),
-                  ),
-                ],
-              )
-
-//              GridView.count(
-//                crossAxisCount: 2,
-//                primary: false,
-//                crossAxisSpacing: 2.0,
-//                mainAxisSpacing: 4.0,
-//                shrinkWrap: true,
-//                children: <Widget>[
-//                  BuildCard(name: "Item 1",status: "Here",cardIndex: 1,),
-//                  BuildCard(name: "Item 2",status: "Here",cardIndex: 2,),
-//                  BuildCard(name: "Item 3",status: "Here",cardIndex: 3,),
-//                  BuildCard(name: "Item 4",status: "Here",cardIndex: 4,),
-//                  BuildCard(name: "Item 5",status: "Here",cardIndex: 5,),
-//                  BuildCard(name: "Item 6",status: "Here",cardIndex: 6,),
-//
-//                ],
-//              )
-            ],
-
+                ))
+          ]),
+          SizedBox(
+            height: 10,
           ),
+
+//          ScrollConfiguration(
+//            behavior: MyBehaviour(),
+//            child: Container(
+//              margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+//              child: TabBar(
+//                isScrollable: true,
+//                unselectedLabelColor: Colors.black,
+//                labelColor: Color(0xffED305A),
+//                controller: _tabController,
+//                indicatorPadding: EdgeInsets.all(5.0),
+//                indicator: BoxDecoration(
+//                  color: Color(0x55B71C1C),
+//                  borderRadius: BorderRadius.only(
+//                    topRight: Radius.circular(15),
+//                    topLeft: Radius.circular(5),
+//                    bottomLeft: Radius.circular(15),
+//                    bottomRight: Radius.circular(5),
+//                  ),
+//                ),
+//                tabs: <Widget>[
+//                  Tab(
+//                    text: "Groceries",
+//                  ),
+//                  Tab(
+//                    text: "Furniture",
+//                  ),
+//                  Tab(
+//                    text: "Clothing",
+//                  ),
+//                  Tab(
+//                    text: "Electronics",
+//                  ),
+//                  Tab(
+//                    text: "Japan",
+//                  ),
+//                  Tab(
+//                    text: "China",
+//                  ),
+//                ],
+//              ),
+//            ),
+//          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(1);
+                  },
+                  child: BuildCard(id: 1)),
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(2);
+                  },
+                  child: BuildCard(id: 2)),
+              Expanded(
+                child: SizedBox(),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(3);
+                  },
+                  child: BuildCard(id: 3)),
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(4);
+                  },
+                  child: BuildCard(id: 4)),
+              Expanded(
+                child: SizedBox(),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(5);
+                  },
+                  child: BuildCard(id: 5)),
+              Expanded(
+                child: SizedBox(),
+              ),
+              MaterialButton(
+                  onPressed: () {
+                    popup(6);
+                  },
+                  child: BuildCard(id: 6)),
+              Expanded(
+                child: SizedBox(),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+
+        ],
+      ),
     );
   }
 }
 
-class MyBehaviour extends ScrollBehavior{
+class MyBehaviour extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
-    BuildContext context, Widget child, AxisDirection axisDirection){
-      return child;
-    }
-  
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }

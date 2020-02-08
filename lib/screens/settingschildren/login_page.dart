@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecomm_app/homepage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -6,34 +8,60 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final auth = FirebaseAuth.instance;
+  final mailController = TextEditingController();
+  final passController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Form(
-            child: Column(
-              children: <Widget>[
+    return Scaffold(
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Form(
+              child: Column(
+                children: <Widget>[
 //                TODO: Add validators
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "E-Mail ID",
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "E-Mail ID",
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: mailController,
                   ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
 
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: "Password",
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                    ),
+                    obscureText: true,
+                    controller: passController,
                   ),
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                )
-              ],
-            ),
-          )
-        ],
+
+                  MaterialButton(
+                    onPressed: () async {
+                      try {
+                        final user = auth.signInWithEmailAndPassword(email: mailController.text, password: passController.text);
+
+                        if(user != null){
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context){
+                              return MyHomePage();
+                            }
+                        ));
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    },
+                    child: Text("LOGIN"),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

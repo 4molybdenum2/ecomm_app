@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
 import 'package:flutter/services.dart';
+import 'package:ecomm_app/screens/loadingscreen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoadingScreen(),
     );
   }
 }

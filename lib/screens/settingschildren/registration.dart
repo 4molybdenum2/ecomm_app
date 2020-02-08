@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ecomm_app/homepage.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -7,10 +8,9 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
-  // final auth = FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
   final mailController = TextEditingController();
   final passController = TextEditingController();
-  String success = "fail";
 
   @override
   Widget build(BuildContext context) {
@@ -43,34 +43,33 @@ class _RegistrationState extends State<Registration> {
                       decoration: InputDecoration(
                         labelText: "Password",
                       ),
-                      keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       controller: passController,
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                     ),
-                    // MaterialButton(
-                    //   onPressed: () async {
-                    //     try {
-                    //       final newUser =
-                    //           await auth.createUserWithEmailAndPassword(
-                    //               email: mailController.text,
-                    //               password: passController.text);
+                    MaterialButton(
+                      onPressed: () async {
+                        try {
+                          final newUser =
+                          await auth.createUserWithEmailAndPassword(
+                              email: mailController.text,
+                              password: passController.text);
 
-                    //       if(newUser != null){
-                    //         setState(() {
-                    //           success = "success";
-                    //         });
-                    //       }
-                    //     } catch (e) {
-                    //       print(e);
-                    //     }
-                    //   },
-                    //   child: Text("REGISTER"),
-                    // ),
-
-                    Text(success),
+                          if(newUser != null){
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context){
+                                  return MyHomePage();
+                                }
+                            ));
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
+                      },
+                      child: Text("REGISTER"),
+                    ),
                   ],
                 ),
               )

@@ -1,7 +1,8 @@
 import 'package:ecomm_app/screens/settingschildren/login_page.dart';
 import 'package:ecomm_app/screens/settingschildren/registration.dart';
-import 'package:flutter/material.dart';
 import 'package:ecomm_app/screens/settingschildren/accountpage.dart';
+
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -9,8 +10,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
-  bool accountexists(){
+  bool accountexists() {
     return false;
   }
 
@@ -45,22 +45,38 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       MaterialButton(
                         onPressed: () {
-                          if (accountexists() == true) {
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return MyAccountView();
-                              },
-                            ));
-                          } else {
-                            Navigator.push(context, MaterialPageRoute(
-                              builder: (context) {
-                                return Registration();
-                              },
-                            ));
-                          }
+//                          if (accountexists() == true) {
+//                            Navigator.push(context, MaterialPageRoute(
+//                              builder: (context) {
+//                                return MyAccountView();
+//                              },
+//                            ));
+//                          } else {
+//                            Navigator.push(context, MaterialPageRoute(
+//                              builder: (context) {
+//                                return Registration();
+//                              },
+//                            ));}
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Login()));
                         },
                         child: Text(
-                          "My Account",
+                          "Login",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      MaterialButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Registration()));
+                        },
+                        child: Text(
+                          "Register",
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
