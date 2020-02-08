@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:ecomm_app/screens/home_screen.dart';
+import 'package:ecomm_app/homepage.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -11,7 +11,6 @@ class _RegistrationState extends State<Registration> {
   final auth = FirebaseAuth.instance;
   final mailController = TextEditingController();
   final passController = TextEditingController();
-  String success = "fail";
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +60,7 @@ class _RegistrationState extends State<Registration> {
                           if(newUser != null){
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (context){
-                                  return HomeScreen();
+                                  return MyHomePage();
                                 }
                             ));
                           }
@@ -71,8 +70,6 @@ class _RegistrationState extends State<Registration> {
                       },
                       child: Text("REGISTER"),
                     ),
-
-                    Text(success),
                   ],
                 ),
               )
