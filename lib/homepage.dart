@@ -1,10 +1,7 @@
 import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:ecomm_app/screens/orders_page.dart';
 import 'package:ecomm_app/screens/setting_page.dart';
-import 'package:ecomm_app/screens/shopdetails.dart';
 import 'package:flutter/material.dart';
-import 'buildcard.dart';
-import 'screens/shopdetails.dart';
 import 'screens/stores_page.dart';
 import 'screens/orders_page.dart';
 import 'screens/setting_page.dart';
@@ -23,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
  final List<Widget> _children = [
    HomeScreen(),
    StoresPage(),
-   Orders_page(),
+   OrdersPage(),
    SettingsPage()
  ];
 
@@ -139,13 +136,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
-                          Icons.settings,
+                          Icons.person,
                           size: currentTab == 3 ? 35 : 30,
                           color:
                               currentTab == 3 ? Colors.red[400] : Colors.grey,
                         ),
                         Text(
-                          'Settings',
+                          'My Account',
                           style: TextStyle(
                             fontSize: currentTab == 3 ? 15 : 10,
                             color:
@@ -170,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: _children[currentTab],
       floatingActionButton: FloatingActionButton(
+        // backgroundColor: Colors.orange,
         onPressed: () {},
         child: Icon(Icons.add),
       ),

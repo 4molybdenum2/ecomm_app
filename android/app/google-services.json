@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "554679123460",
+    "firebase_url": "https://ecom-kppt.firebaseio.com",
+    "project_id": "ecom-kppt",
+    "storage_bucket": "ecom-kppt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554679123460:android:ed3e21bb532778843cff51",
+        "android_client_info": {
+          "package_name": "com.example.ecomm_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBftZBhVFUOCNAzRyvnUR85xDFguiJMo0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554679123460-44iu7t3t5tnes5k9ger2lgm548o6l0bm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
