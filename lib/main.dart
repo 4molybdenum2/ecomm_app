@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'package:flutter/services.dart';
+import 'screens/loadingscreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new LoadingScreen(),
     );
   }
 }

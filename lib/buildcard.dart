@@ -14,28 +14,33 @@ class _BuildCardState extends State<BuildCard> {
   int id;
   String price;
   String mrp;
+  Image img;
   getData(int id){
 
       switch(id){
         case 1:
-          name = "Item 1";
-          price="32 Rs";
-          mrp = " 35 Rs";
+          name = "Groceries";
+
           break;
         case 2:
-          name = "Item 2";
-          price="32 Rs";
-          mrp = " 35 Rs";
+          name = "Electronics";
+
           break;
         case 3:
-          name = "Item 3";
-          price="32 Rs";
-          mrp = " 35 Rs";
+          name = "Furnitures";
+
           break;
         case 4:
-          name = "Item 4";
-          price="32 Rs";
-          mrp = " 35 Rs";
+          name = "Clothing";
+
+          break;
+        case 5:
+          name = "China";
+
+          break;
+        case 6:
+          name = "Japan";
+
           break;
       }
   }
@@ -59,8 +64,7 @@ class _BuildCardState extends State<BuildCard> {
         child: Column(
           children: <Widget>[
             Icon(
-              Icons.image,
-              size: 75,
+              Icons.image
             ),
             Text('$name',
                 style: new TextStyle(fontSize: 16.0, color: Colors.white)),

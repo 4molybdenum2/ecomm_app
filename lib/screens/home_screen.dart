@@ -32,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: ListView(
+    return Scaffold(
+       body: ListView(
         shrinkWrap: true,
             children: <Widget>[
 //            TODO: Yahan stack ki jagah SliverAppBar use karna hai.
@@ -77,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                           )
                         ),
 
+
                         child: TextField(
 
                           decoration: InputDecoration(
@@ -96,50 +97,50 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                   ]
                   ),
                   SizedBox(height: 10,),
-                  
-              ScrollConfiguration(
-                  behavior: MyBehaviour(),
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),                   
-                    child: TabBar(
-                      isScrollable: true,
-                      unselectedLabelColor: Colors.black,
-                      labelColor: Color(0xffED305A),
-                      controller: _tabController,
-                      indicatorPadding: EdgeInsets.all(5.0),
-                      
-                      indicator: BoxDecoration(                     
-                        color: Color(0x55B71C1C),
-                        borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                          topLeft: Radius.circular(5),
-                        bottomLeft: Radius.circular(15),
-                          bottomRight: Radius.circular(5),
-                        ),
-                      ),
-                      tabs: <Widget>[
-                      Tab(
-                      text: "Groceries",
-                      ),
-                      Tab(
-                      text: "Furniture",
-                      ),
-                      Tab(
-                      text: "Clothing",
-                      ),
-                      Tab(
-                      text: "Electronics",
-                      ),
-                      Tab(
-                      text: "Japan",
-                      ),
-                      Tab(
-                      text: "China",
-                      ),
-                      ],
-                    ),
-                    ),
-                  ),
+//
+//              ScrollConfiguration(
+//                  behavior: MyBehaviour(),
+//                  child: Container(
+//                    margin: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
+//                    child: TabBar(
+//                      isScrollable: true,
+//                      unselectedLabelColor: Colors.black,
+//                      labelColor: Color(0xffED305A),
+//                      controller: _tabController,
+//                      indicatorPadding: EdgeInsets.all(5.0),
+//
+//                      indicator: BoxDecoration(
+//                        color: Color(0x55B71C1C),
+//                        borderRadius: BorderRadius.only(
+//                        topRight: Radius.circular(15),
+//                          topLeft: Radius.circular(5),
+//                        bottomLeft: Radius.circular(15),
+//                          bottomRight: Radius.circular(5),
+//                        ),
+//                      ),
+//                      tabs: <Widget>[
+//                      Tab(
+//                      text: "Groceries",
+//                      ),
+//                      Tab(
+//                      text: "Furniture",
+//                      ),
+//                      Tab(
+//                      text: "Clothing",
+//                      ),
+//                      Tab(
+//                      text: "Electronics",
+//                      ),
+//                      Tab(
+//                      text: "Japan",
+//                      ),
+//                      Tab(
+//                      text: "China",
+//                      ),
+//                      ],
+//                    ),
+//                    ),
+//                  ),
               SizedBox(height: 20,),
               Row(
                 children: <Widget>[
@@ -183,6 +184,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin{
                         popup(4);
                       },
                       child: BuildCard(id:4)),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20,),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  MaterialButton(
+                      onPressed: (){
+                        popup(5);
+                      },
+                      child: BuildCard(id:5)),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  MaterialButton(
+                      onPressed: (){
+                        popup(6);
+                      },
+                      child: BuildCard(id:6)),
                   Expanded(
                     child: SizedBox(),
                   ),

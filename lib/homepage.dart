@@ -7,10 +7,6 @@ import 'screens/orders_page.dart';
 import 'screens/setting_page.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
