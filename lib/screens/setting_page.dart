@@ -1,7 +1,8 @@
 import 'package:ecomm_app/screens/settingschildren/login_page.dart';
 import 'package:ecomm_app/screens/settingschildren/registration.dart';
-import 'package:flutter/material.dart';
 import 'package:ecomm_app/screens/settingschildren/accountpage.dart';
+
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -52,11 +53,11 @@ class _SettingsPageState extends State<SettingsPage> {
                               },
                             ));
                           } else {
-//                            Navigator.push(context, MaterialPageRoute(
-//                              builder: (context) {
-//                                return Registration();
-//                              },
-//                            ));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return Registration();
+                              },
+                            ));
                           }
                         },
                         child: Text(

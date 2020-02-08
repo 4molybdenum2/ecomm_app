@@ -17,32 +17,32 @@ class _BuildCardState extends State<BuildCard> {
   Image img;
   getData(int id){
 
-      switch(id){
-        case 1:
-          name = "Groceries";
+    switch(id){
+      case 1:
+        name = "Groceries";
 
-          break;
-        case 2:
-          name = "Electronics";
+        break;
+      case 2:
+        name = "Electronics";
 
-          break;
-        case 3:
-          name = "Furnitures";
+        break;
+      case 3:
+        name = "Furnitures";
 
-          break;
-        case 4:
-          name = "Clothing";
+        break;
+      case 4:
+        name = "Clothing";
 
-          break;
-        case 5:
-          name = "China";
+        break;
+      case 5:
+        name = "China";
 
-          break;
-        case 6:
-          name = "Japan";
+        break;
+      case 6:
+        name = "Japan";
 
-          break;
-      }
+        break;
+    }
   }
 
   void initState() {
@@ -64,7 +64,7 @@ class _BuildCardState extends State<BuildCard> {
         child: Column(
           children: <Widget>[
             Icon(
-              Icons.image
+                Icons.image
             ),
             Text('$name',
                 style: new TextStyle(fontSize: 16.0, color: Colors.white)),

@@ -29,7 +29,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         }));
       });
     });
-    }
+  }
 
 
   @override
