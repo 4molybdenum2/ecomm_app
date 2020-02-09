@@ -1,3 +1,4 @@
+import 'package:ecomm_app/screens/products_page.dart';
 import 'package:flutter/material.dart';
 
 class BuildCard extends StatefulWidget {
@@ -45,6 +46,13 @@ class _BuildCardState extends State<BuildCard> {
     }
   }
 
+  void popup(){
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ProductsPage()));
+  }
+
   void initState() {
     super.initState();
     id = widget.id;
@@ -55,22 +63,28 @@ class _BuildCardState extends State<BuildCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-      child: new MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        elevation: 5.0,
-        height: 150,
-        minWidth: 140,
-        color: Colors.red[400],
-        child: Column(
-          children: <Widget>[
-            Icon(
-                Icons.image
-            ),
-            Text('$name',
-                style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-          ],
+      child: Container(
+        decoration:BoxDecoration(border: Border.all(color: Colors.red , width: 1.0, ),borderRadius: BorderRadius.all(Radius.circular(10.0))),
+
+        child: new MaterialButton(
+
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
+          elevation: 5.0,
+          height: 150,
+          minWidth: 140,
+          child: Column(
+            children: <Widget>[
+              Icon(
+                  Icons.image
+              ),
+              Text('$name',
+                  style: new TextStyle(fontSize: 16.0, color: Colors.white)),
+            ],
+          ),
+          onPressed: () {
+            popup();
+          },
         ),
-        onPressed: () {},
       ),
     );
   }

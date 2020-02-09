@@ -1,3 +1,4 @@
+import 'package:ecomm_app/screens/products_page.dart';
 import 'package:flutter/material.dart';
 import 'shopdetails.dart';
 import 'package:ecomm_app/buildcard.dart';
@@ -45,8 +46,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
     getUser();
   }
-
-  void popup(int id) {}
 
   @override
   Widget build(BuildContext context) {
@@ -163,16 +162,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 child: SizedBox(),
               ),
               MaterialButton(
-                  onPressed: () {
-                    popup(1);
-                  },
+                  onPressed: () {},
                   child: BuildCard(id: 1)),
               Expanded(
                 child: SizedBox(),
               ),
               MaterialButton(
                   onPressed: () {
-                    popup(2);
+
                   },
                   child: BuildCard(id: 2)),
               Expanded(
@@ -190,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               MaterialButton(
                   onPressed: () {
-                    popup(3);
+
                   },
                   child: BuildCard(id: 3)),
               Expanded(
@@ -198,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               MaterialButton(
                   onPressed: () {
-                    popup(4);
+
                   },
                   child: BuildCard(id: 4)),
               Expanded(
@@ -216,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               MaterialButton(
                   onPressed: () {
-                    popup(5);
+
                   },
                   child: BuildCard(id: 5)),
               Expanded(
@@ -224,7 +221,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
               MaterialButton(
                   onPressed: () {
-                    popup(6);
+
                   },
                   child: BuildCard(id: 6)),
               Expanded(
