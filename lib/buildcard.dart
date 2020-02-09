@@ -15,42 +15,41 @@ class _BuildCardState extends State<BuildCard> {
   int id;
   String price;
   String mrp;
+  String imgname;
   Image img;
-  getData(int id){
-
-    switch(id){
+  getData(int id) {
+    switch (id) {
       case 1:
-        name = "Groceries";
-
+        name = "Fruits & Vegetables";
+        imgname="grocerymain.png";
         break;
       case 2:
         name = "Electronics";
-
+        imgname="electronics.png";
         break;
       case 3:
-        name = "Furnitures";
-
+        name = "Personal Care";
+        imgname="personal.png";
         break;
       case 4:
-        name = "Clothing";
-
+        name = "Medicines";
+        imgname="medicine.png";
         break;
       case 5:
-        name = "China";
-
+        name = "Branded Foods";
+        imgname="snacks.png";
         break;
       case 6:
-        name = "Japan";
-
+        name = "Clothing";
+        imgname="clothing.png";
         break;
     }
   }
 
-  void popup(){
+  void popup() {
+    print("Debug pushed");
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ProductsPage()));
+        context, MaterialPageRoute(builder: (context) => ProductsPage()));
   }
 
   void initState() {
@@ -61,31 +60,33 @@ class _BuildCardState extends State<BuildCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-      child: Container(
-        decoration:BoxDecoration(border: Border.all(color: Colors.red , width: 1.0, ),borderRadius: BorderRadius.all(Radius.circular(10.0))),
+    return GestureDetector(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+        child: Container(
+          width: MediaQuery.of(context).size.width / 2.5,
+          height: 150.0,
 
-        child: new MaterialButton(
-
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-          elevation: 5.0,
-          height: 150,
-          minWidth: 140,
+          decoration: BoxDecoration(
+           // color:Color.fromARGB(8, 16, 235, 255),
+            borderRadius: BorderRadius.circular(10.0),
+            border: Border.all(color: Colors.red[400], width: 1.69),
+          ),
           child: Column(
             children: <Widget>[
-              Icon(
-                  Icons.image
-              ),
+              SizedBox(height: 8.0),
+              Image.asset('assets/images/$imgname'),
+              SizedBox(height: 15.0),
               Text('$name',
-                  style: new TextStyle(fontSize: 16.0, color: Colors.white)),
+                  style:
+                      new TextStyle(fontSize: 12.0, color: Colors.orange[400])),
             ],
           ),
-          onPressed: () {
-            popup();
-          },
         ),
       ),
+      onTap: () {
+        popup();
+      },
     );
   }
 }

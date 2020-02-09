@@ -5,7 +5,8 @@ import 'package:ecomm_app/buildcard.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+  int superid;
+  HomeScreen({Key key,superid}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final auth = FirebaseAuth.instance;
   FirebaseUser curUser;
   TabController _tabController;
-  int mainid;
+  //int mainid=widget.superid;
 
   void gotodetails() {
     Navigator.push(
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
@@ -95,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           topRight: Radius.circular(5.0))),
                   child: TextField(
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
+                        prefixIcon: Icon(Icons.search , color: Color(0xff37d4f4),),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(top: 14.0, left: 20.0),
                         hintText: 'Search Products',
@@ -109,6 +111,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ]),
           SizedBox(
             height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+            child: Text(
+                'Shopping Categories:',
+                style: TextStyle(
+                  fontFamily: 'QuickSand',
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black54, 
+                  ),
+              ),
           ),
 
 //          ScrollConfiguration(
@@ -157,80 +171,79 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             height: 20,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
                   onPressed: () {},
                   child: BuildCard(id: 1)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
                   onPressed: () {
 
                   },
                   child: BuildCard(id: 2)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
             ],
           ),
           SizedBox(
             height: 15,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
-                  onPressed: () {
-
-                  },
+                  onPressed: () {},
                   child: BuildCard(id: 3)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
                   onPressed: () {
 
                   },
                   child: BuildCard(id: 4)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
-                  onPressed: () {
-
-                  },
+                  onPressed: () {},
                   child: BuildCard(id: 5)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
               MaterialButton(
                   onPressed: () {
 
                   },
                   child: BuildCard(id: 6)),
-              Expanded(
-                child: SizedBox(),
-              ),
+//              Expanded(
+//                child: SizedBox(),
+//              ),
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
 
         ],
