@@ -116,10 +116,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             child: Text(
                 'Shopping Categories:',
                 style: TextStyle(
-                  fontFamily: 'Montserrat',
+                  fontFamily: 'QuickSand',
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black, 
+                  color: Colors.black54, 
                   ),
               ),
           ),

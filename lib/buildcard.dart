@@ -58,7 +58,8 @@ class _BuildCardState extends State<BuildCard> {
       child: Container(
         width: 150.0,
         height: 150.0,
-        decoration: BoxDecoration(
+        
+        decoration: BoxDecoration(         
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(color: Colors.red[400] , width: 1.0),
           ),
