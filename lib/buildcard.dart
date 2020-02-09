@@ -55,22 +55,26 @@ class _BuildCardState extends State<BuildCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
-      child: new MaterialButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-        elevation: 5.0,
-        height: 150,
-        minWidth: 140,
-        color: Colors.red[400],
-        child: Column(
-          children: <Widget>[
-            Icon(
-                Icons.image
-            ),
-            Text('$name',
-                style: new TextStyle(fontSize: 16.0, color: Colors.white)),
-          ],
+      child: Container(
+        width: 150.0,
+        height: 150.0,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(color: Colors.red[400] , width: 1.0),
+          ),
+        child: new GestureDetector(          
+          child: Column(
+            children: <Widget>[
+              Icon(
+                  Icons.image
+              ),
+              SizedBox(height: 15.0),
+              Text('$name',
+                  style: new TextStyle(fontSize: 16.0, color: Colors.orange[400])),
+            ],
+          ),
+          onTap: () {},
         ),
-        onPressed: () {},
       ),
     );
   }

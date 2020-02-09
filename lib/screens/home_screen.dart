@@ -111,6 +111,18 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           SizedBox(
             height: 10,
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 15.0, left: 15.0),
+            child: Text(
+                'Shopping Categories:',
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black, 
+                  ),
+              ),
+          ),
 
 //          ScrollConfiguration(
 //            behavior: MyBehaviour(),
