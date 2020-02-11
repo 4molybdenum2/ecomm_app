@@ -1,8 +1,6 @@
 import 'package:ecomm_app/screens/cartscreen.dart';
 import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:ecomm_app/screens/orders_page.dart';
-import 'package:ecomm_app/screens/cartscreen.dart';
-import 'package:ecomm_app/screens/products_page.dart';
 import 'package:ecomm_app/screens/setting_page.dart';
 import 'package:flutter/material.dart';
 

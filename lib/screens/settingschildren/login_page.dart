@@ -49,12 +49,25 @@ class _LoginState extends State<Login> {
                                 email: mailController.text,
                                 password: passController.text)
                             .catchError((PlatformException error) {
-                          showCupertinoDialog(
-                              context: context,
-                              builder: (_) => CupertinoAlertDialog(
-                                    title: Text("Error"),
-                                    content: Text(error.message),
-                                  ));
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              // return object of type Dialog
+                              return AlertDialog(
+                                title: new Text("Error"),
+                                content: new Text(error.message),
+                                actions: <Widget>[
+                                  // usually buttons at the bottom of the dialog
+                                  new FlatButton(
+                                    child: new Text("Close"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                           return null;
                         });
 
