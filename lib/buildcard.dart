@@ -2,7 +2,7 @@ import 'package:ecomm_app/screens/products_page.dart';
 import 'package:flutter/material.dart';
 
 class BuildCard extends StatefulWidget {
-  int id;
+  final int id;
   BuildCard({this.id});
 
   @override
