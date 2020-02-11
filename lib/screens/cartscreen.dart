@@ -90,12 +90,16 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         color: Colors.red,
                         onPressed: (){
-                          productQuantity++;
+                          currcount=productQuantity+1;
+                          Firestore.instance.collection('Users/testuser/cart').document('$productID')
+                              .updateData({
+                            'quantity':currcount
+                          });
                         },
                         icon: Icon(Icons.remove,size: 20,),
                       ),
                       Text(
-                        "$productQuantity",
+                        productQuantity.toString(),
                         style: TextStyle(
                           fontSize: 20
                         ),
