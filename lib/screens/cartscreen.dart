@@ -96,7 +96,7 @@ class _CartScreenState extends State<CartScreen> {
                             'quantity':currcount
                           });
                         },
-                        icon: Icon(Icons.add,size: 20,),
+                        icon: Icon(Icons.remove,size: 20,),
                       ),
                       Text(
                         productQuantity.toString(),
@@ -109,7 +109,7 @@ class _CartScreenState extends State<CartScreen> {
                         onPressed: (){
                           productQuantity--;
                         },
-                        icon: Icon(Icons.remove,size: 20,),
+                        icon: Icon(Icons.add,size: 20,),
                       )
                     ],
                   ),
@@ -141,37 +141,36 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red[400],
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            Container(
-              height: 55,
-              decoration: BoxDecoration(
-                  color: Colors.red[400],
-                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(30.0))
-              ),
-              child: Row(
-
+            
+            SizedBox(height: 15.0),
+            Padding(
+              padding: EdgeInsets.only(left: 0.0),
+              child: Column(
                 children: <Widget>[
-                  Expanded(
-                    child:SizedBox(),
-                  ),
-                  Container(
-
-                    child: Text(
-                      "Your Cart($itemcount)",
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.white,
-                      ),
+                Text('Your Cart',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'QuickSand',
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    )
                     ),
-                  ),
-                  Expanded(
-                    child:SizedBox(),
-                  ),
-                ],
+                    SizedBox(height: 10.0),
+                      Text('Subtotal: ₹$subtot' , style: textStyle,),
+                      Text('Delivery Charges: ₹$delcharge',style: textStyle,),
+                      Text('Taxes: ₹$surcharge',style: textStyle,),
+                      Text('Total: ₹$totalcost',style: textStyle,)
+                    
+                  
+              ]
               ),
+            ),
+            SizedBox(
+              height: 40.0,
             ),
 
 
@@ -179,10 +178,12 @@ class _CartScreenState extends State<CartScreen> {
               height: MediaQuery.of(context).size.height - 185.0,
               decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
               ),
               child: ListView(
                   primary: false,
                   padding: EdgeInsets.only(
+                    top: 10.0,
                     left: 25.0,
                     right: 20.0,
                   ),
@@ -228,44 +229,44 @@ class _CartScreenState extends State<CartScreen> {
 
                   ]),
             ),
-            SizedBox(height: 10,),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Expanded(child: SizedBox(),flex: 1,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+            // SizedBox(height: 10,),
+            // Container(
+            //   child: Row(
+            //     children: <Widget>[
+            //       Expanded(child: SizedBox(),flex: 1,),
+            //       Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: <Widget>[
 
-                      Text(
-                          "SubTotal = $subtot Rs"
-                      ),
-                      Text(
-                          "Delivery Charges: $delcharge Rs"
-                      ),
-                      Text(
-                          "Taxes: $surcharge Rs"
-                      ),
-                      Text(
-                          "Total:$totalcost Rs"
-                      )
+            //           Text(
+            //               "SubTotal = $subtot Rs"
+            //           ),
+            //           Text(
+            //               "Delivery Charges: $delcharge Rs"
+            //           ),
+            //           Text(
+            //               "Taxes: $surcharge Rs"
+            //           ),
+            //           Text(
+            //               "Total:$totalcost Rs"
+            //           )
 
-                    ],
-                  ),
-                  Expanded(child: SizedBox(),flex: 6,)
-                ],
-              ),
-            ),
+            //         ],
+            //       ),
+            //       Expanded(child: SizedBox(),flex: 6,)
+            //     ],
+            //   ),
+            // ),
 
 
 
-            MaterialButton(
-              onPressed: (){},
-              child: Container(
-                  color: Colors.red,
-                  child: Text("PROCEED TO BUY")
-              ),
-            ),
+            // MaterialButton(
+            //   onPressed: (){},
+            //   child: Container(
+            //       color: Colors.red,
+            //       child: Text("PROCEED TO BUY")
+            //   ),
+            // ),
 
 
           ],
@@ -274,3 +275,11 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
+
+ const TextStyle textStyle= TextStyle (
+    color: Colors.white,
+    fontFamily: 'QuickSand',
+    fontSize: 12.0,
+    fontWeight: FontWeight.bold,
+    
+  );

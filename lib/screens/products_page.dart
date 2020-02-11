@@ -19,39 +19,6 @@ class _ProductsPageState extends State<ProductsPage> {
     });
   }
 
-//  getShopDetails(){
-//      if(shopData != null)
-//      {
-//        return StreamBuilder(
-//          stream: shopData,
-//          builder: (context,snapshot){
-//            if(snapshot.hasData && snapshot.connectionState == ConnectionState.active){
-//
-//              return ListView.builder(
-//                itemCount: snapshot.data.documents.length,
-//                itemBuilder: (context,index){
-//                  return new Column(
-//                    children: <Widget>[
-//                      _TextData(context, snapshot.data.documents[index]),
-//
-//                    ]
-//                  );
-//                }
-//              );
-//            }
-//            else
-//              return Container(
-//                child:  Text('Inactive Connection'),
-//              );
-//          }
-//          );
-//      }
-//
-//      else{
-//        return Text('Loading');
-//      }
-//    }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,7 +97,8 @@ class _ProductsPageState extends State<ProductsPage> {
                                             )
                                           ],
                                         );
-                                      });
+                                      }
+                                      );
                                 } else {
                                   return new Text('Loading...');
                                 }
