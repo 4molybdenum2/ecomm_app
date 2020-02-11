@@ -10,12 +10,14 @@ class ProductsPage extends StatefulWidget {
 
 class _ProductsPageState extends State<ProductsPage> {
   var shopData;
+  var cartData;
 
   @override
   void initState() {
     super.initState();
     setState(() {
       shopData = Firestore.instance.collection('Products').snapshots();
+      cartData = Firestore.instance.collection('Users/testuser/cart');
     });
   }
 
@@ -124,7 +126,10 @@ class _ProductsPageState extends State<ProductsPage> {
                                                 snapshot.data.documents[i]
                                                     .data['M.R.P'],
                                                 snapshot.data.documents[i]
-                                                    .data['Store Price'])
+                                                    .data['Store Price'],
+                                                snapshot.data.documents[i].documentID
+
+                                            )
                                           ],
                                         );
                                       });
@@ -141,7 +146,7 @@ class _ProductsPageState extends State<ProductsPage> {
 
   //---returns store card---------------------------------------------------------------------------------------------------------
   Widget _buildStoreData(
-      productName, productType, productMRP, productStorePrice) {
+      productName, productType, productMRP, productStorePrice,productID) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
@@ -154,7 +159,8 @@ class _ProductsPageState extends State<ProductsPage> {
         padding:
             EdgeInsets.only(left: 10.0, right: 10.0, top: 15.0, bottom: 15.0),
         child: GestureDetector(
-            onTap: null,
+            onTap: (){
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -197,9 +203,21 @@ class _ProductsPageState extends State<ProductsPage> {
                 ),
                 Column(children: <Widget>[
                   RaisedButton(
-                    onPressed: null,
+                    onPressed: () async {
+                      print(productID);
+                      final docRef = await Firestore.instance.collection('Users/testuser/cart').add({
+                        'name': productName,
+                        'price': productMRP,
+                        'quantity': 1,
+                        'type':productType,
+
+                      });
+
+                    },
+                    //add to cart
                     disabledColor: Colors.red[400],
-                    child: Text('Shop',
+                    color: Colors.red[400],
+                    child: Text('Add to Cart',
                         style: TextStyle(
                             fontFamily: 'QuickSand',
                             fontSize: 18.0,

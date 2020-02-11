@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class CartScreen extends StatefulWidget {
   @override
@@ -16,17 +18,19 @@ class _CartScreenState extends State<CartScreen> {
   int surcharge=0;
   int delcharge=0;
   int curritemqty=0;
+  String store="";
 
   @override
   void initState() {
     super.initState();
     setState(() {
-      cartData=null;
+     cartData=Firestore.instance.collection('Users/testuser/cart').snapshots();
+
     });
   }
 
   Widget _buildcartData(
-      productName, productType, productMRP, productStorePrice) {
+      productName, productQuantity, productPrice, productType,productID) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
@@ -64,7 +68,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                     SizedBox(height: 5.0),
                     Text(
-                      'M.R.P: ₹$productMRP',
+                      'Price: ₹$productPrice',
                       style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 12.0,
@@ -72,7 +76,7 @@ class _CartScreenState extends State<CartScreen> {
                     ),
                     SizedBox(height: 5.0),
                     Text(
-                      'Store Price: ₹$productStorePrice',
+                      'Store: $store',
                       style: TextStyle(
                           fontFamily: 'Montserrat',
                           fontSize: 12.0,
@@ -86,12 +90,12 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         color: Colors.red,
                         onPressed: (){
-                          curritemqty++;
+                          productQuantity++;
                         },
                         icon: Icon(Icons.add,size: 20,),
                       ),
                       Text(
-                        "0",
+                        "$productQuantity",
                         style: TextStyle(
                           fontSize: 20
                         ),
@@ -99,11 +103,28 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         color: Colors.red,
                         onPressed: (){
-                          curritemqty--;
+                          productQuantity--;
                         },
                         icon: Icon(Icons.remove,size: 20,),
                       )
                     ],
+                  ),
+                  RaisedButton(
+                    onPressed: () async {
+                      Future<void> deleteDoc(String jobId){
+                        return Firestore.instance.collection('Users/testuser/cart').document(jobId).delete();
+                      }
+                      deleteDoc(productID);
+                    },
+                    //add to cart
+                    disabledColor: Colors.red[400],
+                    color: Colors.red[400],
+                    child: Text('Remove from Cart',
+                        style: TextStyle(
+                            fontFamily: 'QuickSand',
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white)),
                   )
                 ])
               ],
@@ -168,15 +189,15 @@ class _CartScreenState extends State<CartScreen> {
                           child: StreamBuilder(
                               stream: cartData,
                               builder: (context, snapshot) {
-                                if (snapshot.data == null) {
+                                if (snapshot.data != null) {
                                   return ListView.builder(
                                       primary: false,
                                       shrinkWrap: true,
-                                    //  itemCount: snapshot.data.documents.length,
-                                      itemCount: 2,
+                                      itemCount: snapshot.data.documents.length,
                                       itemBuilder: (context, i) {
                                         return new Column(
                                           children: <Widget>[
+
 //                                            _buildcartData(
 //                                                snapshot.data.documents[i]
 //                                                    .data['Name'],
@@ -186,8 +207,11 @@ class _CartScreenState extends State<CartScreen> {
 //                                                    .data['M.R.P'],
 //                                                snapshot.data.documents[i]
 //                                                    .data['Store Price'])
-                                            _buildcartData("Name 1", "Type 1", "MRP 1", "Store 1"),
-                                            _buildcartData("Name 2", "Type 2", "MRP 2", "Store 2"),
+                                          _buildcartData(snapshot.data.documents[i].data['name'],
+                                              snapshot.data.documents[i].data['quantity'],
+                                              snapshot.data.documents[i].data['price'],
+                                              snapshot.data.documents[i].data['type'],
+                                          snapshot.data.documents[i].documentID)
                                           ],
                                         );
                                       });
