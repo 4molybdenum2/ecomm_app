@@ -252,20 +252,15 @@ class _CartScreenState extends State<CartScreen> {
             //   ),
             // ),
 
-
-
-            // MaterialButton(
-            //   onPressed: (){},
-            //   child: Container(
-            //       color: Colors.red,
-            //       child: Text("PROCEED TO BUY")
-            //   ),
-            // ),
-
-
           ],
         )
       ),
+      floatingActionButton: FloatingActionButton(
+              onPressed: null,
+              backgroundColor: Colors.red[400],
+              foregroundColor: Colors.white,
+              child: Icon(Icons.shopping_basket),
+              )
     );
   }
 }
