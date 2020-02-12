@@ -90,11 +90,16 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         color: Colors.red,
                         onPressed: (){
-                          currcount=productQuantity+1;
-                          Firestore.instance.collection('Users/testuser/cart').document('$productID')
-                              .updateData({
-                            'quantity':currcount
-                          });
+                          currcount=productQuantity-1;
+                          if(currcount==0){
+                            Firestore.instance.collection('Users/testuser/cart').document('$productID').delete();
+                          }else{
+                            Firestore.instance.collection('Users/testuser/cart').document('$productID')
+                                .updateData({
+                              'quantity':currcount
+                            });
+                          }
+
                         },
                         icon: Icon(Icons.remove,size: 20,),
                       ),
@@ -107,29 +112,18 @@ class _CartScreenState extends State<CartScreen> {
                       IconButton(
                         color: Colors.red,
                         onPressed: (){
-                          productQuantity--;
+                          currcount=productQuantity+1;
+                          Firestore.instance.collection('Users/testuser/cart').document('$productID')
+                              .updateData({
+                            'quantity':currcount
+                          });
                         },
+
                         icon: Icon(Icons.add,size: 20,),
                       )
                     ],
                   ),
-                  RaisedButton(
-                    onPressed: () async {
-                      Future<void> deleteDoc(String jobId){
-                        return Firestore.instance.collection('Users/testuser/cart').document(jobId).delete();
-                      }
-                      deleteDoc(productID);
-                    },
-                    //add to cart
-                    disabledColor: Colors.red[400],
-                    color: Colors.red[400],
-                    child: Text('Remove from Cart',
-                        style: TextStyle(
-                            fontFamily: 'QuickSand',
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white)),
-                  )
+
                 ])
               ],
             )),
@@ -193,7 +187,7 @@ class _CartScreenState extends State<CartScreen> {
                       child: Container(
                           child: StreamBuilder(
                               stream: cartData,
-                              builder: (context, snapshot) {
+                              builder: (contegxt, snapshot) {
                                 if (snapshot.data != null) {
                                   return ListView.builder(
                                       primary: false,
