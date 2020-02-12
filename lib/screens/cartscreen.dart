@@ -1,3 +1,4 @@
+import 'package:ecomm_app/database_helper/cartdatabase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,18 +20,18 @@ class _CartScreenState extends State<CartScreen> {
   int delcharge=0;
   int curritemqty=0;
   String store="";
+  var data = cartDatabaseProvider.db.getAllItem();
 
   @override
   void initState() {
     super.initState();
     setState(() {
-     cartData=Firestore.instance.collection('Users/testuser/cart').snapshots();
 
     });
   }
 
   Widget _buildcartData(
-      productName, productQuantity, productPrice, productType,productID) {
+      productName, productQuantity, productPrice, productType,productID,productmrp) {
     return Container(
       margin: EdgeInsets.only(bottom: 20.0),
       decoration: BoxDecoration(
@@ -89,11 +90,25 @@ class _CartScreenState extends State<CartScreen> {
                     children: <Widget>[
                       IconButton(
                         color: Colors.red,
-                        onPressed: (){
-                          currcount=productQuantity+1;
-                          Firestore.instance.collection('Users/testuser/cart').document('$productID')
-                              .updateData({
-                            'quantity':currcount
+                        onPressed: () async{
+                       //
+
+                          currcount=int.parse(productQuantity) - 1;
+                          if(currcount==0){
+                            await cartDatabaseProvider.db.deleteItemWithId(productID);
+                          }else{
+                            await cartDatabaseProvider.db.updateitem(new Item(
+                                name: productName,
+                                type: productType,
+                                quantity: currcount,
+                                storeprice: productPrice,
+                                mrp: productmrp,
+                                id: productID
+                            ));
+                          }
+
+                          setState(() {
+                            data = cartDatabaseProvider.db.getAllItem();
                           });
                         },
                         icon: Icon(Icons.remove,size: 20,),
@@ -106,30 +121,27 @@ class _CartScreenState extends State<CartScreen> {
                       ),
                       IconButton(
                         color: Colors.red,
-                        onPressed: (){
-                          productQuantity--;
+                        onPressed: () async {
+                          currcount=int.parse(productQuantity)+1;
+                          await cartDatabaseProvider.db.updateitem(new Item(
+                              name: productName,
+                              type: productType,
+                              quantity: currcount,
+                              storeprice: productPrice,
+                              mrp: productmrp,
+                              id: productID
+                          ));
+
+                          setState(() {
+                            data = cartDatabaseProvider.db.getAllItem();
+                          });
                         },
+
                         icon: Icon(Icons.add,size: 20,),
                       )
                     ],
                   ),
-                  RaisedButton(
-                    onPressed: () async {
-                      Future<void> deleteDoc(String jobId){
-                        return Firestore.instance.collection('Users/testuser/cart').document(jobId).delete();
-                      }
-                      deleteDoc(productID);
-                    },
-                    //add to cart
-                    disabledColor: Colors.red[400],
-                    color: Colors.red[400],
-                    child: Text('Remove from Cart',
-                        style: TextStyle(
-                            fontFamily: 'QuickSand',
-                            fontSize: 10.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white)),
-                  )
+
                 ])
               ],
             )),
@@ -145,7 +157,7 @@ class _CartScreenState extends State<CartScreen> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
-            
+
             SizedBox(height: 15.0),
             Padding(
               padding: EdgeInsets.only(left: 0.0),
@@ -164,8 +176,8 @@ class _CartScreenState extends State<CartScreen> {
                       Text('Delivery Charges: ₹$delcharge',style: textStyle,),
                       Text('Taxes: ₹$surcharge',style: textStyle,),
                       Text('Total: ₹$totalcost',style: textStyle,)
-                    
-                  
+
+
               ]
               ),
             ),
@@ -191,73 +203,22 @@ class _CartScreenState extends State<CartScreen> {
                     Padding(
                       padding: EdgeInsets.only(top: 30.0),
                       child: Container(
-                          child: StreamBuilder(
-                              stream: cartData,
-                              builder: (context, snapshot) {
-                                if (snapshot.data != null) {
-                                  return ListView.builder(
-                                      primary: false,
-                                      shrinkWrap: true,
-                                      itemCount: snapshot.data.documents.length,
-                                      itemBuilder: (context, i) {
-                                        return new Column(
-                                          children: <Widget>[
-
-//                                            _buildcartData(
-//                                                snapshot.data.documents[i]
-//                                                    .data['Name'],
-//                                                snapshot.data.documents[i]
-//                                                    .data['Type'],
-//                                                snapshot.data.documents[i]
-//                                                    .data['M.R.P'],
-//                                                snapshot.data.documents[i]
-//                                                    .data['Store Price'])
-                                          _buildcartData(snapshot.data.documents[i].data['name'],
-                                              snapshot.data.documents[i].data['quantity'],
-                                              snapshot.data.documents[i].data['price'],
-                                              snapshot.data.documents[i].data['type'],
-                                          snapshot.data.documents[i].documentID)
-                                          ],
-                                        );
-                                      });
-                                } else {
-                                  return new Text('Loading...');
-                                }
-                              })),
+                          child: FutureBuilder<List<Item>>(
+                            future: data,
+                            builder: (BuildContext context, AsyncSnapshot<List<Item>> snapshot) {
+                              if (snapshot.hasData) {
+                                return buildListView(snapshot);
+                              } else {
+                                return Center(child: CircularProgressIndicator());
+                              }
+                            },
+                          ),
+                      ),
                     ),
 
 
                   ]),
             ),
-            // SizedBox(height: 10,),
-            // Container(
-            //   child: Row(
-            //     children: <Widget>[
-            //       Expanded(child: SizedBox(),flex: 1,),
-            //       Column(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: <Widget>[
-
-            //           Text(
-            //               "SubTotal = $subtot Rs"
-            //           ),
-            //           Text(
-            //               "Delivery Charges: $delcharge Rs"
-            //           ),
-            //           Text(
-            //               "Taxes: $surcharge Rs"
-            //           ),
-            //           Text(
-            //               "Total:$totalcost Rs"
-            //           )
-
-            //         ],
-            //       ),
-            //       Expanded(child: SizedBox(),flex: 6,)
-            //     ],
-            //   ),
-            // ),
-
           ],
         )
       ),
@@ -268,6 +229,28 @@ class _CartScreenState extends State<CartScreen> {
               child: Icon(Icons.shopping_basket),
               )
     );
+  }
+
+  ListView buildListView(AsyncSnapshot<List<Item>> snapshot) {
+    return ListView.builder(
+                                shrinkWrap: true,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  Item item = snapshot.data[index];
+                                  return new Column(
+                                      children: <Widget>[
+                                      _buildcartData(
+                                      item.name,
+                                      item.quantity,
+                                      item.storeprice,
+                                      item.type,
+                                      item.id,
+                                      item.mrp)
+
+                                    ]);
+                                  },
+                              );
   }
 }
 

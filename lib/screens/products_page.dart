@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:ecomm_app/database_helper/cartdatabase.dart';
 class ProductsPage extends StatefulWidget {
   @override
   _ProductsPageState createState() => _ProductsPageState();
@@ -15,7 +15,6 @@ class _ProductsPageState extends State<ProductsPage> {
     super.initState();
     setState(() {
       shopData = Firestore.instance.collection('Products').snapshots();
-      cartData = Firestore.instance.collection('Users/testuser/cart');
     });
   }
 
@@ -169,18 +168,28 @@ class _ProductsPageState extends State<ProductsPage> {
                 ),
                 Column(children: <Widget>[
                   RaisedButton(
-                    onPressed: () async {
-                      print(productID);
-                      final docRef = await Firestore.instance.collection('Users/testuser/cart').add({
-                        'name': productName,
-                        'price': productMRP,
-                        'quantity': 1,
-                        'type':productType,
-
-                      });
-
-                    },
-                    //add to cart
+                  onPressed: () async {
+                    print("pressed");
+                    await cartDatabaseProvider.db.additemToDatabase(new Item(
+                        name: productName,
+                        id: productID,
+                        mrp: productMRP,
+                        storeprice: productStorePrice,
+                        type: productType
+                        ,quantity: 1));
+                    print("task completed");
+                  },
+//                    onPressed: () async {
+////                      print(productID);
+////                      final docRef = await Firestore.instance.collection('Users/testuser/cart').add({
+////                        'name': productName,
+////                        'price': productMRP,
+////                        'quantity': 1,
+////                        'type':productType,
+////
+////                      });
+//
+//                    }
                     disabledColor: Colors.red[400],
                     color: Colors.red[400],
                     child: Text('Add to Cart',
@@ -197,3 +206,5 @@ class _ProductsPageState extends State<ProductsPage> {
     );
   }
 }
+
+
