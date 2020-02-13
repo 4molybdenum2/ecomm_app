@@ -14,7 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _children = [
     HomeScreen(),
     CartScreen(),
-    OrdersPage(),
+//    OrdersPage(),
     SettingsPage()
   ];
 
@@ -47,13 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.shopping_cart),
             title: Text("Cart")
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              title: Text("Orders")
-          ),
+//          BottomNavigationBarItem(
+//              icon: Icon(Icons.account_circle),
+//              title: Text("Orders")
+//          ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text("My Account")
+              title: Text("Account")
           ),
         ],
       ),

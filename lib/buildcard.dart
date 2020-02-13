@@ -47,7 +47,6 @@ class _BuildCardState extends State<BuildCard> {
   }
 
   void popup() {
-    print("Debug pushed");
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => ProductsPage()));
   }

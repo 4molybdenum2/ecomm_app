@@ -2,6 +2,7 @@ import 'package:ecomm_app/database_helper/cartdatabase.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:toast/toast.dart';
 
 
 class CartScreen extends StatefulWidget {
@@ -96,6 +97,7 @@ class _CartScreenState extends State<CartScreen> {
                           currcount=int.parse(productQuantity) - 1;
                           if(currcount==0){
                             await cartDatabaseProvider.db.deleteItemWithId(productID);
+                            Toast.show("Removed $productName from cart", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
                           }else{
                             await cartDatabaseProvider.db.updateitem(new Item(
                                 name: productName,
@@ -234,7 +236,6 @@ class _CartScreenState extends State<CartScreen> {
   ListView buildListView(AsyncSnapshot<List<Item>> snapshot) {
     return ListView.builder(
                                 shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
                                 itemCount: snapshot.data.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   Item item = snapshot.data[index];

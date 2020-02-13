@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecomm_app/database_helper/cartdatabase.dart';
+import 'package:toast/toast.dart';
+
 class ProductsPage extends StatefulWidget {
   @override
   _ProductsPageState createState() => _ProductsPageState();
@@ -169,7 +171,6 @@ class _ProductsPageState extends State<ProductsPage> {
                 Column(children: <Widget>[
                   RaisedButton(
                   onPressed: () async {
-                    print("pressed");
                     await cartDatabaseProvider.db.additemToDatabase(new Item(
                         name: productName,
                         id: productID,
@@ -177,7 +178,8 @@ class _ProductsPageState extends State<ProductsPage> {
                         storeprice: productStorePrice,
                         type: productType
                         ,quantity: 1));
-                    print("task completed");
+
+                    Toast.show("$productName has been added to your cart", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
                   },
 //                    onPressed: () async {
 ////                      print(productID);
