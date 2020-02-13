@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ecomm_app/homepage.dart';
-import 'package:toast/toast.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override

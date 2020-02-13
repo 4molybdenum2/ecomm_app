@@ -76,6 +76,7 @@ class _ProductsPageState extends State<ProductsPage> {
                           child: StreamBuilder(
                               stream: shopData,
                               builder: (context, snapshot) {
+//                                TODO: Snapshot end then no loading.
                                 if (snapshot.data != null) {
                                   return ListView.builder(
                                       primary: false,
