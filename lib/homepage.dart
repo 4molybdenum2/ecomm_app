@@ -5,20 +5,28 @@ import 'package:ecomm_app/screens/setting_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
+  final String userid;
+  MyHomePage({this.userid});
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String uid;
+
   int currentTab = 0;
   final List<Widget> _children = [
     HomeScreen(),
     CartScreen(),
-//    OrdersPage(),
     SettingsPage()
   ];
 
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uid =  widget.userid;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
