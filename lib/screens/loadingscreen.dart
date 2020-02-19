@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ecomm_app/homepage.dart';
+import 'package:ecomm_app/screens/settingschildren/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -15,14 +18,32 @@ class _LoadingScreenState extends State<LoadingScreen> {
     getLocationData();
   }
 
+  void function(String name) async{
+//    SharedPreferences prefs = await SharedPreferences.getInstance();
+//    prefs.setString('prevUser', name);
+    if(name!=null){
+
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) {
+        return MyHomePage(
+          userid: name,
+        );
+      }));
+    }else{
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) {
+            return Login();
+          }));
+    }
+  }
   void getLocationData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String curr = prefs.get('prevUser');
     Future.delayed(const Duration(milliseconds: 2250), ()
     {
-      setState(() {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) {
-          return MyHomePage();
-        }));
+      setState((){
+       function(curr);
+
       });
     });
   }
