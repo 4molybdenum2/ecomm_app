@@ -1,3 +1,4 @@
+import 'package:ecomm_app/screens/orders_page.dart';
 import 'package:ecomm_app/screens/settingschildren/login_page.dart';
 import 'package:ecomm_app/screens/settingschildren/registration.dart';
 import 'package:ecomm_app/screens/settingschildren/accountpage.dart';
@@ -80,9 +81,22 @@ class _SettingsPageState extends State<SettingsPage> {
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
+                      MaterialButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => OrdersPage()));
+                        },
+                        child: Text(
+                          "My Orders",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ],
                   ),
                 ],
+
               )
             ],
           ),

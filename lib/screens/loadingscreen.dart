@@ -1,7 +1,5 @@
-import 'package:ecomm_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:ecomm_app/homepage.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -18,19 +16,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocationData() async {
-    Future.delayed(const Duration(milliseconds: 3000), ()
+    Future.delayed(const Duration(milliseconds: 2250), ()
     {
       setState(() {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) {
-          return MyHomePage(
-
-          );
+          return MyHomePage();
         }));
       });
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +35,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Colors.red[400],Colors.red[300]]
+              colors: [Colors.red[400],Colors.red[300]],
           ),),
         child: Center(
-          child: SpinKitWave(
-            color: Colors.white,
-            size: 50,
-
-          ),
+//        TODO: CheckInternet
+        child: Image(
+          image: AssetImage('assets/images/snacks.png'),
+        ),
         ),
       ),
     );

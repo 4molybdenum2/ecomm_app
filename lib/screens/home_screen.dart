@@ -15,8 +15,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final auth = FirebaseAuth.instance;
   FirebaseUser curUser;
-  TabController _tabController;
-  //int mainid=widget.superid;
 
   void gotodetails() {
     Navigator.push(
@@ -43,7 +41,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    _tabController = new TabController(length: 6, vsync: this);
     super.initState();
     getUser();
   }

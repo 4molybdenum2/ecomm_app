@@ -11,12 +11,13 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.red,
-        accentColor: Color(0xff37d4f4)
+        accentColor: Color(0xff37d4f4),
       ),
       home: LoadingScreen(),
     );
