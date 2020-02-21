@@ -1,3 +1,4 @@
+import 'package:ecomm_app/screens/settingschildren/loginpage_new.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatefulWidget {
@@ -9,7 +10,8 @@ class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.green,
+      color: Colors.white,      
+      child: LoginPage(),
     );
   }
 }

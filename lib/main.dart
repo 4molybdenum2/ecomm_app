@@ -1,3 +1,4 @@
+import 'package:ecomm_app/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ecomm_app/screens/loadingscreen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         accentColor: Color(0xff37d4f4),
       ),
-      home: LoadingScreen(),
+      home: MyHomePage(),
     );
   }
 }

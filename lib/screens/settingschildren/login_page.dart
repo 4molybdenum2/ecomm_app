@@ -71,15 +71,6 @@ class _LoginState extends State<Login> {
                           return null;
                         });
 
-//                        final user =  authRes.user;
-
-//                        if(user != null){
-//                        Navigator.push(context, MaterialPageRoute(
-//                            builder: (context){
-//                              return MyHomePage();
-//                            }
-//                        ));
-//                        }
                       } catch (e) {
                         print(e);
                       }
